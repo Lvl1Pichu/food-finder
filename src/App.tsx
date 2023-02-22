@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import ButtonComponent from './ButtonComponent'
 import HeaderComponent from './HeaderComponent'
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
   return (
     <div className="App">
       <HeaderComponent></HeaderComponent>
+      <ButtonComponent label="Click" onClick={() => console.log("Button clicked")} />
     </div>
   )
 }
