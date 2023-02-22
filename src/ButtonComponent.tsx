@@ -1,3 +1,5 @@
+import styled from 'styled-components';
+
 interface ButtonProps {
   label: string;
   onClick: () => void;
@@ -7,12 +9,26 @@ interface ButtonProps {
 function Button(props: ButtonProps) {
   const { label, onClick, disabled } = props;
   
-  return ( <button 
+  return (
+    <StyledButton 
     onClick={onClick} 
     disabled={disabled}> 
-    {label}
-  </button>
+    {label}</StyledButton>
     );
   }
   
 export default Button;
+
+const StyledButton = styled.button`
+  background-color: #fff;
+  border: 2px solid black;
+  padding: 14px 26px;
+  border-radius: 200px;
+  font-size: 20px;
+  cursor: pointer;
+  margin-top: 2rem;
+
+  &:hover {
+    background: pink;
+  }
+`;
