@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 function Header() {
   const [dropdownValue, setDropdownValue] = useState('default');
 
-  const handleDropdownChange = (event) => {
+  const handleDropdownChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setDropdownValue(event.target.value);
   }
 
