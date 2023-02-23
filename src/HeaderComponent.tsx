@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from 'react';
+import styled from 'styled-components';
 
 interface HeaderProps {
   getRecipe: (ingredient: string) => Promise<void>
@@ -17,16 +18,55 @@ function Header(props: HeaderProps) {
   }
 
   return (
-    <div className="header">
-      <select value={dropdownValue} onChange={handleDropdownChange}>
+    <StyledHeaderContainer className="header">
+      <StyledSearchBar
+      className='ingredient-searchbar' 
+      type="text" 
+      placeholder="Search..." 
+      />
+      <StyledSelect value={dropdownValue} onChange={handleDropdownChange}>
         <option value="default">Select an option</option>
         <option value="cheddar">Cheddar</option>
         <option value="red-onion">Red onion</option>
         <option value="avocado">Avocado</option>
-      </select>
+      </StyledSelect>
       <button onClick={onClick}>Find a recipe.</button>
-    </div>
+    </StyledHeaderContainer>
   );
 }
 
 export default Header;
+
+const StyledHeaderContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  background-color: #f5f5f5;
+  padding: 20px;
+`;
+
+const StyledSearchBar = styled.input`
+  border: 2px solid black;
+  padding: 14px;
+  border-radius: 200px;
+  font-size: 20px;
+`;
+
+const StyledSelect = styled.select`
+border: 2px solid black;
+padding: 14px;
+font-size: 20px;
+position: relative;
+
+&::after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #000 transparent transparent transparent;
+}
+`;
