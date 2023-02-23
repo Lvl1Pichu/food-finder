@@ -18,26 +18,26 @@ function Header(props: HeaderProps) {
   }
 
   return (
-    <HeaderContainer className="header">
-      <SearchBar
+    <StyledHeaderContainer className="header">
+      <StyledSearchBar
       className='ingredient-searchbar' 
       type="text" 
       placeholder="Search..." 
       />
-      <Select value={dropdownValue} onChange={handleDropdownChange}>
+      <StyledSelect value={dropdownValue} onChange={handleDropdownChange}>
         <option value="default">Select an option</option>
         <option value="cheddar">Cheddar</option>
         <option value="red-onion">Red onion</option>
         <option value="avocado">Avocado</option>
-      </Select>
+      </StyledSelect>
       <button onClick={onClick}>Find a recipe.</button>
-    </HeaderContainer>
+    </StyledHeaderContainer>
   );
 }
 
 export default Header;
 
-const HeaderContainer = styled.div`
+const StyledHeaderContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,14 +46,14 @@ const HeaderContainer = styled.div`
   padding: 20px;
 `;
 
-const SearchBar = styled.input`
+const StyledSearchBar = styled.input`
   border: 2px solid black;
   padding: 14px;
   border-radius: 200px;
   font-size: 20px;
 `;
 
-const Select = styled.select`
+const StyledSelect = styled.select`
 border: 2px solid black;
 padding: 14px;
 font-size: 20px;
