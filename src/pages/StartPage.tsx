@@ -1,13 +1,15 @@
 import styled from "styled-components";
 import Button from "../components/Button";
-import InputField from "../components/InputField";
+import InputForm from "../components/InputForm";
 import List from "../components/List";
 
 function StartPage() {
     return (
     <PageContainer>
     <h1>My Pantry</h1>
-    <InputField></InputField>
+    <InputForm onSubmit={function (ingredient: string): void {
+                throw new Error("Function not implemented.");
+            } }></InputForm>
     <List></List>
     <Button label={"Search Recipes"} onClick={function (): void {
                 throw new Error("Function not implemented.");
