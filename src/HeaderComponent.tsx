@@ -1,11 +1,20 @@
 import { ChangeEvent, useState } from 'react';
 import styled from 'styled-components';
 
-function Header() {
+interface HeaderProps {
+  getRecipe: (ingredient: string) => Promise<void>
+}
+
+function Header(props: HeaderProps) {
   const [dropdownValue, setDropdownValue] = useState('default');
+
 
   const handleDropdownChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setDropdownValue(event.target.value);
+  }
+
+  const onClick = () => {
+    props.getRecipe(dropdownValue);
   }
 
   return (
@@ -17,10 +26,11 @@ function Header() {
       />
       <Select value={dropdownValue} onChange={handleDropdownChange}>
         <option value="default">Select an option</option>
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
+        <option value="cheddar">Cheddar</option>
+        <option value="red-onion">Red onion</option>
+        <option value="avocado">Avocado</option>
       </Select>
+      <button onClick={onClick}>Find a recipe.</button>
     </HeaderContainer>
   );
 }
