@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import './App.css';
 import HeaderComponent from './componets/HeaderComponent';
 import Output from './Output';
@@ -28,6 +29,7 @@ function App() {
     <div className="App">
       <HeaderComponent getRecipe={getRecipe}></HeaderComponent>
       <Output recipeTitle={recipe ? recipe : 'Select an ingredient to search for.'}></Output>
+      <Outlet></Outlet>
     </div>
   )
 }

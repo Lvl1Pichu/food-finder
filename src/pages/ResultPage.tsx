@@ -5,10 +5,9 @@ import ListItem from "../componets/ListItem";
 
 
 function ResultPage() {
-
-    const [ingredients, setIngredients] = useState(() => {
-        useParams().ingredients;
-    });
+    const {ings} = useParams();
+    console.log(ings);
+    const [ingredients, setIngredients] = useState(ings);
     const [recipes, setRecipes] = useState('');
 
     // function unpackIngredients() {
