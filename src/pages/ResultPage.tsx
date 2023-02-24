@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { RecipeCard } from "../types";
 
 
 
@@ -7,7 +8,7 @@ function ResultPage() {
     const {ings} = useParams();
     console.log(ings);
     const [ingredients, setIngredients] = useState(ings);
-    const [recipes, setRecipes] = useState<object[]>();
+    const [recipeCards, setRecipeCards] = useState<RecipeCard[]>();
 
     useEffect(() => {
         console.log("UseEffect ran.")
@@ -22,7 +23,7 @@ function ResultPage() {
         fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=ea186f9a58784d0d86b47956204c76be&ingredients=${ingredients}&number=3`,
         options)
         .then((r) => r.json())
-        .then((data) => setRecipes(data));
+        .then((data) => setRecipeCards(data));
     }, [ingredients] 
     )
 
@@ -33,8 +34,8 @@ function ResultPage() {
     }
 
     function listRecipes() {
-        if (recipes)
-       return recipes.map((r) => {return <li key={r.title}>{r.title}</li>})
+        if (recipeCards)
+       return recipeCards.map((r) => {return <li key={r.title}>{r.title}</li>})
     }
 
     return(
@@ -46,7 +47,7 @@ function ResultPage() {
             </div>
             <div>
                 <ul>
-                    {recipes ? listRecipes() : null}
+                    {recipeCards ? listRecipes() : null}
                 </ul>
             </div>
         </main>
