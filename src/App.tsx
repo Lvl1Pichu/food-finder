@@ -1,15 +1,17 @@
-import { useState } from 'react'
-import './App.css'
-import StartPage from './pages/StartPage'
+import { useState } from 'react';
+import './App.css';
+import StartPage from './pages/StartPage';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [ingredients, setIngredients] = useState<string[]>([]);
+
+  const handleAddIngredient = (ingredient: string) => {
+    setIngredients([...ingredients, ingredient]);
+  };
 
   return (
     <div className="App">
-      <StartPage></StartPage>
-      {/* <HeaderComponent></HeaderComponent>
-      <ButtonComponent label="Click" onClick={() => console.log("Button clicked")} /> */}
+      <StartPage handleAddIngredient={handleAddIngredient} />
     </div>
   )
 }

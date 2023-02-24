@@ -1,32 +1,40 @@
 import { FormEvent, useState } from "react";
 import styled from "styled-components";
+import Button from "./Button";
 
 interface Props {
   onSubmit: (ingredient: string ) => void;
 }
 
 export default function InputForm(props: Props) {
-
   const [ingredient, setIngredient] = useState('');
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    props.onSubmit(ingredient);
+    if (ingredient.length > 0) {
+      props.onSubmit(ingredient);
+      setIngredient("");
+    }
   };
 
-    return (
-      <StyledForm onSubmit={handleSubmit}>
-        <label htmlFor="ingredient">Add ingredient</label>
-        <StyledInputForm
-          id="ingredient"
-          name="ingredient"
-          type="text" 
-          placeholder="Search..." 
-          onChange={(e) => setIngredient(e.target.value)}
-        />
-        <button>Submit</button>
-      </StyledForm>
-    )
+  return (
+    <StyledForm onSubmit={handleSubmit}>
+      <label htmlFor="ingredient">Add ingredient</label>
+      <StyledInputForm
+        id="ingredient"
+        name="ingredient"
+        type="text" 
+        placeholder="Search..."
+        value={ingredient} 
+        onChange={(e) => setIngredient(e.target.value)}
+      />
+      <Button
+        label="Add ingredient"
+        disabled={ingredient.length === 0}
+        onClick={() => {}}
+      />
+    </StyledForm>
+  );
 }
 
 const StyledInputForm = styled.input`

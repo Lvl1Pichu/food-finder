@@ -1,21 +1,32 @@
+import { useState } from "react";
 import styled from "styled-components";
 import Button from "../components/Button";
 import InputForm from "../components/InputForm";
 import List from "../components/List";
 
-function StartPage() {
-    return (
-    <PageContainer>
-    <h1>My Pantry</h1>
-    <InputForm onSubmit={function (ingredient: string): void {
-                throw new Error("Function not implemented.");
-            } }></InputForm>
-    <List></List>
-    <Button label={"Search Recipes"} onClick={function (): void {
-                throw new Error("Function not implemented.");
-            } }></Button>
-    </PageContainer>
-    )
+interface Props {
+  handleAddIngredient: (ingredient: string) => void;
+}
+
+function StartPage(props: Props) {
+
+  const [ingredients, setIngredients] = useState<string[]>([]);
+
+  const handleAddIngredient = (ingredient: string) => {
+    props.handleAddIngredient(ingredient);
+    setIngredients([...ingredients, ingredient]);
+  };
+
+  return (
+    <div>
+      <PageContainer>
+        <h1>My Pantry</h1>
+        <InputForm onSubmit={handleAddIngredient} />
+        <List ingredients={ingredients} />
+        <Button label={"Search Recipes"} onClick={function (): void {} }></Button>
+      </PageContainer>
+    </div>
+  )
 }
 
 export default StartPage

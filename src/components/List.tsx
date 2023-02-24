@@ -1,17 +1,16 @@
 import styled from "styled-components";
 
-function List() {
+interface Props {
+    ingredients: string[];
+  }
+
+function List(props: Props) {
+
     return(
         <StyledList>
-            <StyledListItem>
-                Avocado
-            </StyledListItem>
-            <StyledListItem>
-                Red onion
-            </StyledListItem>
-            <StyledListItem>
-                Butter
-            </StyledListItem>
+            {props.ingredients.map((ingredient, index) => (
+                <StyledListItem key={index}>{ingredient}</StyledListItem>
+            ))}
         </StyledList>
     )
 }
