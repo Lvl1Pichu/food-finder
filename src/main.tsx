@@ -7,7 +7,7 @@ import ResultPage from './pages/ResultPage'
 const router =  createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      <Route path="/:ings" element={<ResultPage />}></Route>
+      <Route path="result/:ings" element={<ResultPage />}></Route>
     </Route>
   )
 )

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ListItem from "../componets/ListItem";
 
 
 
@@ -10,13 +9,11 @@ function ResultPage() {
     const [ingredients, setIngredients] = useState(ings);
     const [recipes, setRecipes] = useState('');
 
-    // function unpackIngredients() {
-    //     let ingredients
-    //     if(params) {
-    //     ingredients = params.split("+");
-    //     }
-    //     return ingredients;
-    // }
+    function listIngredients() {
+        let ingsList
+        ingsList = ings?.split("+");
+        return ingsList?.map(ing => <li>{ing}</li>)
+    }
 
     useEffect(() => {
         console.log("UseEffect ran.")
@@ -32,20 +29,14 @@ function ResultPage() {
         options)
         .then((r) => r.json())
         .then((data) => console.log(data));
-    }, [ingredients]
+    }, //[ingredients]
     )
-
-    function renderList() {
-        return(
-            <ListItem></ListItem>
-        )
-    }
 
     return(
         <main>
             <div>
                 <ul>
-                    {renderList()}
+                    {listIngredients()}
                 </ul>
             </div>
         </main>
