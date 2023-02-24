@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { RecipeCard } from "../types";
+import { RecipeCard } from "../interfaces";
 
 
 
 function ResultPage() {
     const {ings} = useParams();
-    console.log(ings);
     const [ingredients, setIngredients] = useState(ings);
     const [recipeCards, setRecipeCards] = useState<RecipeCard[]>();
 
+    /**
+     * Calls API on change of the ingredients state.
+     */
     useEffect(() => {
-        console.log("UseEffect ran.")
         const options = {
-            // ea186f9a58784d0d86b47956204c76be
+            // API key: ea186f9a58784d0d86b47956204c76be
             method: "GET",
             headers: {
               "Content-Type": "application/json",
@@ -27,15 +28,22 @@ function ResultPage() {
     }, [ingredients] 
     )
 
+    /**
+     * Removes hyphens from ingredients params and replaces with spaces.
+     * Separates ingredients by '+' symbols.
+     * Return array of li elements with ingrdient names as content and keys.
+     */
     function listIngredients() {
-        let ingsList
-        ingsList = ings?.replace("-", " ").split("+");
-        return ingsList?.map(ing => <li key={ing}>{ing}</li>) // Question! Can I remove question marks?
+        if(ings)
+        return ings.replace("-", " ").split("+").map(ing => <li key={ing}>{ing}</li>);
     }
 
+    /**
+     * Returns array of list items for each recipe in the state.
+     */
     function listRecipes() {
         if (recipeCards)
-       return recipeCards.map((r) => {return <li key={r.title}>{r.title}</li>})
+        return recipeCards.map((r) => {return <li key={r.title}>{r.title}</li>})
     }
 
     return(
