@@ -1,21 +1,17 @@
 import { useState } from "react";
+import { NavLink } from 'react-router-dom';
 import styled from "styled-components";
 import Button from "../componets/Button";
 import InputForm from "../componets/InputForm";
 import List from "../componets/List";
 
-interface Props {
-  addIngredient: (ingredient: string) => void
-  removeIngredient: (ingredientToBeRemoved: string) => void;
-}
 
-export default function StartPage(props: Props) {
+export default function StartPage() {
 
   const [ingredients, setIngredients] = useState<string[]>([]);
 
   // Add ingredients without mutating the ingredients list
   const handleAddIngredient = (ingredient: string) => {
-    props.addIngredient(ingredient);
     setIngredients([...ingredients, ingredient]);
   };
 
@@ -28,10 +24,10 @@ export default function StartPage(props: Props) {
   }
 
   const handleSearch = () => {
-    // Pass ingredients to ResultPage
-    // ...
+    <NavLink to="/result-page" state={ingredients}></NavLink>
+    window.location.href = `/result-page?ingredients=${ingredients}`;
   };
-
+  
   return (
       <PageContainer>
         <h1>Find a recipe that fits your needs!</h1>
