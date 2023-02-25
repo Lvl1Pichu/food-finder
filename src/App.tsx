@@ -5,6 +5,7 @@ import StartPage from './pages/StartPage';
 function App() {
   const [ingredients, setIngredients] = useState<string[]>([]);
 
+  // Add and remove ingredient
   const handleAddIngredient = (ingredient: string) => {
     setIngredients([...ingredients, ingredient]);
   };
@@ -19,7 +20,7 @@ function App() {
   return (
     <div className="App">
       <StartPage
-        handleAddIngredient={handleAddIngredient}
+        addIngredient={handleAddIngredient}
         removeIngredient={handleRemoveIngredient}
       />    
       </div>

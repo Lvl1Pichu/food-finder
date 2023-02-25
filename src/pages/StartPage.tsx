@@ -5,7 +5,7 @@ import InputForm from "../components/InputForm";
 import List from "../components/List";
 
 interface Props {
-  handleAddIngredient: (ingredient: string) => void
+  addIngredient: (ingredient: string) => void
   removeIngredient: (ingredientToBeRemoved: string) => void;
 }
 
@@ -13,13 +13,14 @@ function StartPage(props: Props) {
 
   const [ingredients, setIngredients] = useState<string[]>([]);
 
+  // Add ingredients without mutating the ingredients list
   const handleAddIngredient = (ingredient: string) => {
-    props.handleAddIngredient(ingredient);
+    props.addIngredient(ingredient);
     setIngredients([...ingredients, ingredient]);
   };
 
   // Remove ingredient and update list
-  const removeIngredient = (ingredientToBeRemoved: string) => {
+  const handleRemoveIngredient = (ingredientToBeRemoved: string) => {
     const updatedIngredientList = ingredients.filter(
       (ingredient) => ingredient !== ingredientToBeRemoved
     )
@@ -37,8 +38,8 @@ function StartPage(props: Props) {
         <InputForm onSubmit={handleAddIngredient} />
         <List 
           ingredients={ingredients} 
-          removeIngredient={removeIngredient} 
-          handleAddIngredient={handleAddIngredient}
+          removeIngredient={handleRemoveIngredient} 
+          addIngredient={handleAddIngredient}
         />
         <Button label={"Search Recipes"} onClick={handleSearch}></Button>
       </PageContainer>

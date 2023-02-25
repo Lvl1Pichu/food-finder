@@ -4,7 +4,7 @@ import addIcon from "../assets/add.svg";
 
 interface Props {
     ingredients: string[];
-    handleAddIngredient: (ingredient: string) => void;
+    addIngredient: (ingredient: string) => void;
     removeIngredient: (ingredientToBeRemoved: string) => void;
   }
 
