@@ -1,33 +1,43 @@
 import { ChangeEvent, useState } from 'react';
 import styled from 'styled-components';
 
-function Header() {
+interface HeaderProps {
+  getRecipe: (ingredient: string) => Promise<void>
+}
+
+function Header(props: HeaderProps) {
   const [dropdownValue, setDropdownValue] = useState('default');
+
 
   const handleDropdownChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setDropdownValue(event.target.value);
   }
 
+  const onClick = () => {
+    props.getRecipe(dropdownValue);
+  }
+
   return (
-    <HeaderContainer className="header">
-      <SearchBar
+    <StyledHeaderContainer className="header">
+      <StyledSearchBar
       className='ingredient-searchbar' 
       type="text" 
       placeholder="Search..." 
       />
-      <Select value={dropdownValue} onChange={handleDropdownChange}>
+      <StyledSelect value={dropdownValue} onChange={handleDropdownChange}>
         <option value="default">Select an option</option>
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
-      </Select>
-    </HeaderContainer>
+        <option value="cheddar">Cheddar</option>
+        <option value="red-onion">Red onion</option>
+        <option value="avocado">Avocado</option>
+      </StyledSelect>
+      <button onClick={onClick}>Find a recipe.</button>
+    </StyledHeaderContainer>
   );
 }
 
 export default Header;
 
-const HeaderContainer = styled.div`
+const StyledHeaderContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,14 +46,14 @@ const HeaderContainer = styled.div`
   padding: 20px;
 `;
 
-const SearchBar = styled.input`
+const StyledSearchBar = styled.input`
   border: 2px solid black;
   padding: 14px;
   border-radius: 200px;
   font-size: 20px;
 `;
 
-const Select = styled.select`
+const StyledSelect = styled.select`
 border: 2px solid black;
 padding: 14px;
 font-size: 20px;

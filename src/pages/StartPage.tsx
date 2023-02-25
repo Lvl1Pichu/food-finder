@@ -1,15 +1,15 @@
 import { useState } from "react";
 import styled from "styled-components";
-import Button from "../components/Button";
-import InputForm from "../components/InputForm";
-import List from "../components/List";
+import Button from "../componets/Button";
+import InputForm from "../componets/InputForm";
+import List from "../componets/List";
 
 interface Props {
   addIngredient: (ingredient: string) => void
   removeIngredient: (ingredientToBeRemoved: string) => void;
 }
 
-function StartPage(props: Props) {
+export default function StartPage(props: Props) {
 
   const [ingredients, setIngredients] = useState<string[]>([]);
 
@@ -45,8 +45,6 @@ function StartPage(props: Props) {
       </PageContainer>
   )
 }
-
-export default StartPage
 
 const PageContainer = styled.div`
   display: flex;
