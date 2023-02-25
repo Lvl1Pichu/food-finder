@@ -9,10 +9,20 @@ function App() {
     setIngredients([...ingredients, ingredient]);
   };
 
+  const handleRemoveIngredient = (ingredient: string) => {
+    const updatedIngredientList = ingredients.filter(
+      (item) => item !== ingredient
+    );
+    setIngredients(updatedIngredientList);
+  };
+
   return (
     <div className="App">
-      <StartPage handleAddIngredient={handleAddIngredient} />
-    </div>
+      <StartPage
+        handleAddIngredient={handleAddIngredient}
+        removeIngredient={handleRemoveIngredient}
+      />    
+      </div>
   )
 }
 

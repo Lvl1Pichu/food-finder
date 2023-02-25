@@ -1,6 +1,7 @@
 import { FormEvent, useState } from "react";
 import styled from "styled-components";
-import Button from "./Button";
+import addIcon from "../assets/add.svg";
+
 
 interface Props {
   onSubmit: (ingredient: string ) => void;
@@ -19,7 +20,6 @@ export default function InputForm(props: Props) {
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <label htmlFor="ingredient">Add ingredient</label>
       <StyledInputForm
         id="ingredient"
         name="ingredient"
@@ -28,11 +28,7 @@ export default function InputForm(props: Props) {
         value={ingredient} 
         onChange={(e) => setIngredient(e.target.value)}
       />
-      <Button
-        label="Add ingredient"
-        disabled={ingredient.length === 0}
-        onClick={() => {}}
-      />
+      <StyledSubmitButton onClick={() => {}}disabled={ingredient.length === 0}>+</StyledSubmitButton>
     </StyledForm>
   );
 }
@@ -42,9 +38,29 @@ const StyledInputForm = styled.input`
   padding: 14px;
   border-radius: 200px;
   font-size: 20px;
-  margin-top: 1rem;
+  background-color: var(--light-clr);
 `;
+
 const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
+position: relative;
+`;
+
+const StyledSubmitButton = styled.button`
+  position: absolute;
+  right: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 1.8rem;
+  width: 1.8rem;
+  background-color: transparent;
+  background-image: url(${addIcon});
+  background-repeat: no-repeat;
+  background-position: center center;
+  border: none;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: auto;
+  }
 `;

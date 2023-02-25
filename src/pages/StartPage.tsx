@@ -5,7 +5,8 @@ import InputForm from "../components/InputForm";
 import List from "../components/List";
 
 interface Props {
-  handleAddIngredient: (ingredient: string) => void;
+  handleAddIngredient: (ingredient: string) => void
+  removeIngredient: (ingredientToBeRemoved: string) => void;
 }
 
 function StartPage(props: Props) {
@@ -17,15 +18,30 @@ function StartPage(props: Props) {
     setIngredients([...ingredients, ingredient]);
   };
 
+  // Remove ingredient and update list
+  const removeIngredient = (ingredientToBeRemoved: string) => {
+    const updatedIngredientList = ingredients.filter(
+      (ingredient) => ingredient !== ingredientToBeRemoved
+    )
+    setIngredients(updatedIngredientList)
+  }
+
+  const handleSearch = () => {
+    // Pass ingredients to ResultPage
+    // ...
+  };
+
   return (
-    <div>
       <PageContainer>
-        <h1>My Pantry</h1>
+        <h1>Find a recipe that fits your needs!</h1>
         <InputForm onSubmit={handleAddIngredient} />
-        <List ingredients={ingredients} />
-        <Button label={"Search Recipes"} onClick={function (): void {} }></Button>
+        <List 
+          ingredients={ingredients} 
+          removeIngredient={removeIngredient} 
+          handleAddIngredient={handleAddIngredient}
+        />
+        <Button label={"Search Recipes"} onClick={handleSearch}></Button>
       </PageContainer>
-    </div>
   )
 }
 
@@ -34,11 +50,10 @@ export default StartPage
 const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 1rem;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
-  background-color: #f5f5f5;
-  padding: 20px;
-  height: 100vh;
+  background-color: #141414;
+  color: #efefef;
+  padding: 1.2rem;
+  min-height: 100vh;
 `;
