@@ -1,8 +1,13 @@
 * {
     box-sizing: border-box;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 body {
     margin: 0;
+}
+
+:root {
+    --light-clr: #ffffffbd;
+    --light-clr-hover: #ffffff75;
 }
