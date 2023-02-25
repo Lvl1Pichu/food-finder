@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import './App.css';
 import HeaderComponent from './componets/HeaderComponent';
 import Output from './Output';
-import StartPage from './pages/StartPage';
+
 
 export default function App() {
 
@@ -24,27 +25,13 @@ export default function App() {
     .then((data) => setRecipe(data[0].title));
   }
 
-  const [ingredients, setIngredients] = useState<string[]>([]);
-
-  // Add and remove ingredient
-  const handleAddIngredient = (ingredient: string) => {
-    setIngredients([...ingredients, ingredient]);
-  };
-
-  const handleRemoveIngredient = (ingredient: string) => {
-    const updatedIngredientList = ingredients.filter(
-      (item) => item !== ingredient
-    );
-    setIngredients(updatedIngredientList);
-  };
-
   return (
     <div className="App">
-            <HeaderComponent getRecipe={getRecipe}></HeaderComponent>
+      <HeaderComponent getRecipe={getRecipe}></HeaderComponent>
       <Output recipeTitle={recipe ? recipe : 'Select an ingredient to search for.'}></Output>
-      <StartPage
-        addIngredient={handleAddIngredient}
-        removeIngredient={handleRemoveIngredient}
-      />    
+      <main>
+        <Outlet />
+      </main>
       </div>
-  )}
+  )
+}
