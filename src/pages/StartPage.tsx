@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink } from 'react-router-dom';
 import styled from "styled-components";
+import bg from "../assets/bg.jpg";
 import Button from "../componets/Button";
 import InputForm from "../componets/InputForm";
 import List from "../componets/List";
@@ -51,6 +52,10 @@ const PageContainer = styled.div`
   color: #efefef;
   padding: 1.2rem;
   min-height: 100vh;
+  background-image: url(${bg});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   & h1 {
     text-align: center;

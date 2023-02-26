@@ -39,10 +39,11 @@ const StyledInputForm = styled.input`
   border-radius: 200px;
   font-size: 20px;
   background-color: var(--light-clr);
+  border: transparent;
 `;
 
 const StyledForm = styled.form`
-position: relative;
+  position: relative;
 `;
 
 const StyledSubmitButton = styled.button`
