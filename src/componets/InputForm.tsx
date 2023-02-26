@@ -24,11 +24,11 @@ export default function InputForm(props: Props) {
         id="ingredient"
         name="ingredient"
         type="text" 
-        placeholder="Search..."
+        placeholder=""
         value={ingredient} 
         onChange={(e) => setIngredient(e.target.value)}
       />
-      <StyledSubmitButton onClick={() => {}}disabled={ingredient.length === 0}>+</StyledSubmitButton>
+      <StyledSubmitButton onClick={() => {}}disabled={ingredient.length === 0}></StyledSubmitButton>
     </StyledForm>
   );
 }
@@ -60,7 +60,6 @@ const StyledSubmitButton = styled.button`
   cursor: pointer;
 
   &:disabled {
-    opacity: 0.7;
     cursor: auto;
   }
 `;

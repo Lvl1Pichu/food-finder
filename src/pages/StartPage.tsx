@@ -51,4 +51,9 @@ const PageContainer = styled.div`
   color: #efefef;
   padding: 1.2rem;
   min-height: 100vh;
+
+  & h1 {
+    text-align: center;
+  font-weight: 400;
+  }
 `;

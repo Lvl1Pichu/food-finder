@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import addIcon from "../assets/add.svg";
-
+import removeIcon from "../assets/remove.svg";
 interface Props {
     ingredients: string[];
     addIngredient: (ingredient: string) => void;
@@ -13,8 +12,9 @@ function List(props: Props) {
         <StyledList>
             {props.ingredients.map((ingredient, index) => (
                 <StyledListItem key={index}>
-                    {ingredient} 
-                    <StyledRemoveButton onClick={() => props.removeIngredient(ingredient)} />
+                    <span>{ingredient}</span> 
+                    <StyledRemoveButton onClick={() => props.removeIngredient(ingredient)}>
+                    </StyledRemoveButton>
                 </StyledListItem>
             ))}
         </StyledList>
@@ -24,9 +24,10 @@ function List(props: Props) {
 export default List
 
 const StyledList= styled.ul`
-  padding: 14px;
-  font-size: 20px;
-  list-style: none;
+    font-size: 1.125rem;
+    list-style: none;
+    padding: 1rem 0;
+    margin: 0;
 `;
 
 const StyledListItem = styled.li`
@@ -35,39 +36,25 @@ const StyledListItem = styled.li`
     background-color: var(--light-clr);
     color: #000;
     border: none;
-    padding: 14px 26px;
+    padding: 0.8rem 1.2rem;
     border-radius: 200px;
-    font-size: 20px;
+    font-size: 1.125rem;
     position: relative;
     display: flex;
+    justify-content:space-between;
     align-items: center;
+    width: 18.063rem;
 `;
 
 const StyledRemoveButton = styled.button`
-  opacity: 0.7;
-  right: 1.2rem;
-  top: 42%;
-  rotate: 134deg;
-  transform: translateX(-50%);
-  height: 1.8rem;
-  width: 1.8rem;
+  height: 1.6rem;
+  width: 1.6rem;
+  padding: 4px;
   background-color: transparent;
   border: none;
   cursor: pointer;
-  position: relative;
-
-  &::before {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-image: url(${addIcon});
-    background-repeat: no-repeat;
-    background-position: center center;
-  }
-
-  &:hover {
-    opacity: 1;
-  }
+  background-image: url(${removeIcon});
+  background-repeat: no-repeat;
+  background-position: center center;
 `;
 
