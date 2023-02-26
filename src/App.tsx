@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import './App.css';
-import HeaderComponent from './componets/HeaderComponent';
-import Output from './Output';
 
 
 export default function App() {
@@ -27,8 +25,8 @@ export default function App() {
 
   return (
     <div className="App">
-      <HeaderComponent getRecipe={getRecipe}></HeaderComponent>
-      <Output recipeTitle={recipe ? recipe : 'Select an ingredient to search for.'}></Output>
+      {/* <HeaderComponent getRecipe={getRecipe}></HeaderComponent>
+      <Output recipeTitle={recipe ? recipe : 'Select an ingredient to search for.'}></Output> */}
       <main>
         <Outlet />
       </main>
