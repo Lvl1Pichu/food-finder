@@ -11,13 +11,13 @@ export default function HelpPanel (props: HelpProps) {
         <Panel className={props.helpOpen ? "open" : ""}>
             <HelpText>
                 <Paragraph>Start by adding the ingredients you have in your kitchen to the list. Type them into the text box and press enter or click the plus icon.</Paragraph>
-                <Hyphen>~</Hyphen>
+                <Tilde>~</Tilde>
                 <Paragraph>When you are done click 'Search recipes' and Food Finder will find recipes that you can cook with them.</Paragraph>
-                <Hyphen>~</Hyphen>
+                <Tilde>~</Tilde>
                 <Paragraph>If any ingredients are missing we will will let you know.</Paragraph>
-                <Hyphen>~</Hyphen>
+                <Tilde>~</Tilde>
                 <Paragraph>Once you have found a recipe that you like, click on it to see the details.</Paragraph>
-                <Hyphen>~</Hyphen>
+                <Tilde>~</Tilde>
                 <Paragraph>On the details page you will see a full list of ingredients and a link to the website where you can read the method.</Paragraph>
             </HelpText>
             <HelpButton content="✕" onClick={props.closeHelp}/>
@@ -48,15 +48,15 @@ const Panel = styled.div`
 
 const HelpText = styled.div`
     overflow: scroll;
-    max-width: 500px;
-`
+    `
 
 const Paragraph = styled.p`
-    color: #141414;
-`
-
-const Hyphen = styled.p`
     margin: 2rem 0;
+    color: #141414;
+    `
+
+const Tilde = styled.p`
+    margin: 0;
     color: #141414;
     text-align: center;
 `
