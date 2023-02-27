@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import bg from "../assets/bg.jpg";
 import Button from "../componets/Button";
@@ -9,6 +10,7 @@ import List from "../componets/List";
 export default function StartPage() {
 
   const [ingredients, setIngredients] = useState<string[]>([]);
+  const navigate = useNavigate();
 
   // Add ingredients without mutating the ingredients list
   const handleAddIngredient = (ingredient: string) => {
@@ -25,7 +27,8 @@ export default function StartPage() {
 
   // Change url to result-page followed by the searched ingredients.
   const handleSearch = () => {
-    window.location.href = `/result-page?ingredients=${ingredients}`;
+    const params = ingredients.join(',+');
+    navigate(`/result/${params}`);
   };
   
   return (
