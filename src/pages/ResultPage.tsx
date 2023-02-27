@@ -30,12 +30,12 @@ function ResultPage() {
 
     /**
      * Removes hyphens from ingredients params and replaces with spaces.
-     * Separates ingredients by '+' symbols.
+     * Separates ingredients by ',+'.
      * Return array of li elements with ingrdient names as content and keys.
      */
     function listIngredients() {
         if(ings)
-        return ings.replace("-", " ").split("+").map(ing => <li key={ing}>{ing}</li>);
+        return ings.replace("-", " ").split(",+").map(ing => <li key={ing}>{ing}</li>);
     }
 
     /**
