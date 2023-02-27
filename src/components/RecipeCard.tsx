@@ -6,7 +6,7 @@ const RecipeCard = styled.div`
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  background-image: url('your-image-url');
+  background-image: url('/assets/hamburger.webp');
   background-size: cover;
 `;
 

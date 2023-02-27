@@ -1,9 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
 import bg from "../assets/bg.jpg";
-import Button from "../componets/Button";
-import InputForm from "../componets/InputForm";
-import List from "../componets/List";
+import Button from "../components/Button";
+import InputForm from "../components/InputForm";
+import List from "../components/List";
 
 
 export default function StartPage() {
