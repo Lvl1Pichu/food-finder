@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import bg from "../assets/bg.jpg";
 import Button from "../componets/Button";
+import HelpButton from "../componets/HelpButton";
+import HelpPanel from "../componets/HelpPanel";
 import InputForm from "../componets/InputForm";
 import List from "../componets/List";
 
@@ -46,7 +48,7 @@ export default function StartPage() {
         <h1>Find a recipe that fits your needs!</h1>
         <InputContainer>
         <InputForm onSubmit={handleAddIngredient} />
-          <HelpButton onClick={openHelp}>i</HelpButton>
+          <HelpButton content="i" onClick={openHelp}></HelpButton>
         </InputContainer>
         <List 
           ingredients={ingredients} 
@@ -54,9 +56,7 @@ export default function StartPage() {
           addIngredient={handleAddIngredient}
         />
         <Button label={"Search Recipes"} onClick={handleSearch} disabled={!ingredients.length}></Button>
-        <HelpPanel className={helpOpen ? "open" : ""}>Help
-          <HelpButton onClick={closeHelp}>X</HelpButton>
-        </HelpPanel>
+        <HelpPanel closeHelp={closeHelp} helpOpen={helpOpen}/>
       </PageContainer>
   )
 }
@@ -84,38 +84,4 @@ const PageContainer = styled.div`
 
 const InputContainer = styled.div`
   display: flex;
-`
-
-const HelpButton = styled.button`
-  font-size: 1.5rem;
-  border-radius: 50%;
-  height: 3rem;
-  width: 3rem;
-  border: none;
-  background: var(--light-clr);
-  cursor: pointer;
-
-  &:hover {
-    background: var(--light-clr-hover);
-  }
-`
-
-
-const HelpPanel = styled.div`
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  top: 5%;
-  bottom: 5%;
-  left: 5%;
-  right: 5%;
-  padding: 2rem 5%;
-  background: #c0c0c0;
-  transform: translateY(110%);
-  transition: transform 300ms ease-in-out;
-  &.open {
-    transform: translateY(0%);
-  }
 `
