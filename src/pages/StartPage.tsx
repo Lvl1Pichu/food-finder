@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import bg from "../assets/bg.jpg";
-import remove from "../assets/remove.svg";
 import Button from "../componets/Button";
 import InputForm from "../componets/InputForm";
 import List from "../componets/List";
@@ -11,6 +10,7 @@ import List from "../componets/List";
 export default function StartPage() {
 
   const [ingredients, setIngredients] = useState<string[]>([]);
+  const [helpOpen, setHelpOpen] = useState(false);
   const navigate = useNavigate();
 
   // Add ingredients without mutating the ingredients list
@@ -32,12 +32,12 @@ export default function StartPage() {
     navigate(`/result/${params}`);
   };
   
-  const showHelp = () => {
-
+  const openHelp = () => {
+    setHelpOpen(true)
   }
 
-  const hideHelp = () => {
-
+  const closeHelp = () => {
+    setHelpOpen(false)
   }
 
   return (
@@ -45,7 +45,7 @@ export default function StartPage() {
         <h1>Find a recipe that fits your needs!</h1>
         <InputContainer>
         <InputForm onSubmit={handleAddIngredient} />
-          <HelpButton onClick={showHelp}>i</HelpButton>
+          <HelpButton onClick={openHelp}>i</HelpButton>
         </InputContainer>
         <List 
           ingredients={ingredients} 
@@ -53,8 +53,8 @@ export default function StartPage() {
           addIngredient={handleAddIngredient}
         />
         <Button label={"Search Recipes"} onClick={handleSearch}></Button>
-        <Help>Help
-          <HelpButton onClick={hideHelp}>{remove}</HelpButton>
+        <Help className={helpOpen ? "open" : "closed"}>Help
+          <HelpButton onClick={closeHelp}>X</HelpButton>
         </Help>
       </PageContainer>
   )
@@ -86,10 +86,38 @@ const InputContainer = styled.div`
 `
 
 const HelpButton = styled.button`
+  font-size: 1.5rem;
   border-radius: 50%;
-  height: 100%;
+  height: 3rem;
+  width: 3rem;
+  border: none;
+  background: var(--light-clr);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--light-clr-hover);
+  }
 `
 
 
 const Help = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  top: 5%;
+  bottom: 5%;
+  left: 5%;
+  right: 5%;
+  padding: 2rem 5%;
+  background: #c0c0c0;
+  transition: transform 300ms cubic-bezier(1, 3, 3, 1);
+  &.open {
+    transform: translateY(0%);
+  }
+  
+  &.closed {
+    transform: translateY(110%);
+  }
 `
