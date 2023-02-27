@@ -8,8 +8,11 @@ interface Props {
 }
 
 export default function InputForm(props: Props) {
+
   const [ingredient, setIngredient] = useState('');
 
+  // This function is called when the form is submitted, 
+  // ingredient state is updated
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (ingredient.length > 0) {
@@ -24,7 +27,6 @@ export default function InputForm(props: Props) {
         id="ingredient"
         name="ingredient"
         type="text" 
-        placeholder=""
         value={ingredient} 
         onChange={(e) => setIngredient(e.target.value)}
       />

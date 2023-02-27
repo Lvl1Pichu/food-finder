@@ -1,12 +1,9 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
+function ResultPage() {
 
-interface Props {
-  ingredients: string[];
-}
-
-function ResultPage(props: Props) {
+  // Get the search query parameters from the URL using useLocation hook
     const { search } = useLocation();
     const queryParams = new URLSearchParams(search);
     const ingredients = queryParams.get('ingredients')?.split(',') ?? [];

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { NavLink } from 'react-router-dom';
 import styled from "styled-components";
 import bg from "../assets/bg.jpg";
 import Button from "../componets/Button";
@@ -24,8 +23,8 @@ export default function StartPage() {
     setIngredients(updatedIngredientList)
   }
 
+  // Change url to result-page followed by the searched ingredients.
   const handleSearch = () => {
-    <NavLink to="/result-page" state={ingredients}></NavLink>
     window.location.href = `/result-page?ingredients=${ingredients}`;
   };
   
@@ -56,9 +55,10 @@ const PageContainer = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.4);
 
   & h1 {
     text-align: center;
-  font-weight: 400;
+    font-weight: 400;
   }
 `;
