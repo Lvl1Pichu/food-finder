@@ -4,7 +4,7 @@ const ListItemContainer = styled.div`
   position: relative;
   padding: 10px;
   margin-bottom: 10px;
-  border-radius: 30%;
+  border-radius: 200px;
   background: rgba(255, 255, 255, 0.35);
   width: 200px;
 `;
@@ -25,7 +25,7 @@ const ListItemDeleteButton = styled.button`
   border: none;
   background-color: transparent;
   font-size: 16px;
-  color: red;
+  color: black;
   cursor: pointer;
 `;
 

@@ -31,7 +31,8 @@ const IngredientsContainer = styled.div`
 `;
 
 const RecipesContainer = styled.div`
-    
+    overflow-y: scroll;
+    max-height: 600px;
 `
 
 function RecipePage() {
@@ -52,6 +53,7 @@ function RecipePage() {
         </IngredientsContainer>
         
         <RecipesContainer>
+            <RecipeComponent></RecipeComponent>
             <RecipeComponent></RecipeComponent>
             <RecipeComponent></RecipeComponent>
             <RecipeComponent></RecipeComponent>
