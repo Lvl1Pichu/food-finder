@@ -45,8 +45,7 @@ function ResultPage() {
      */
     function listRecipes() {
         if (recipeCards)
-        console.log(recipeCards);
-        // return recipeCards.map((r) => {return <li key={r.title}>{r.title}</li>})
+        return recipeCards.map((r) => {return <li key={r.title}>{r.title}</li>})
     }
 
     return(
