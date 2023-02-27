@@ -1,4 +1,3 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
 import App from './App'
@@ -10,8 +9,8 @@ const router =  createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       
+      <Route path="result/:ings" element={<ResultPage />}></Route> 
       <Route path="" element={<StartPage/>} />
-      <Route path="/result-page" element={<ResultPage/>} />
       <Route path="*" element={<h2>404 not found</h2>} />
 
     </Route>
@@ -20,7 +19,7 @@ const router =  createBrowserRouter(
 )
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
+  //<React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>,
+  //</React.StrictMode>,
 )
