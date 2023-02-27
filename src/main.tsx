@@ -9,7 +9,7 @@ const router =  createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       
-      <Route path="result/:ings" element={<ResultPage />}></Route> 
+      <Route path="/result-page" element={<ResultPage/>} />
       <Route path="" element={<StartPage/>} />
       <Route path="*" element={<h2>404 not found</h2>} />
 
