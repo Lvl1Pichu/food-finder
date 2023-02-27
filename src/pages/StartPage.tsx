@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import bg from "../assets/bg.jpg";
+import remove from "../assets/remove.svg";
 import Button from "../componets/Button";
 import InputForm from "../componets/InputForm";
 import List from "../componets/List";
@@ -31,16 +32,30 @@ export default function StartPage() {
     navigate(`/result/${params}`);
   };
   
+  const showHelp = () => {
+
+  }
+
+  const hideHelp = () => {
+
+  }
+
   return (
       <PageContainer>
         <h1>Find a recipe that fits your needs!</h1>
+        <InputContainer>
         <InputForm onSubmit={handleAddIngredient} />
+          <HelpButton onClick={showHelp}>i</HelpButton>
+        </InputContainer>
         <List 
           ingredients={ingredients} 
           removeIngredient={handleRemoveIngredient} 
           addIngredient={handleAddIngredient}
         />
         <Button label={"Search Recipes"} onClick={handleSearch}></Button>
+        <Help>Help
+          <HelpButton onClick={hideHelp}>{remove}</HelpButton>
+        </Help>
       </PageContainer>
   )
 }
@@ -65,3 +80,16 @@ const PageContainer = styled.div`
     font-weight: 400;
   }
 `;
+
+const InputContainer = styled.div`
+  display: flex;
+`
+
+const HelpButton = styled.button`
+  border-radius: 50%;
+  height: 100%;
+`
+
+
+const Help = styled.div`
+`
