@@ -4,6 +4,8 @@ import { RecipeCard } from "../interfaces";
 
 
 
+import styled from 'styled-components';
+
 function ResultPage() {
     const {ings} = useParams();
     const [ingredients, setIngredients] = useState(ings);
@@ -47,7 +49,7 @@ function ResultPage() {
     }
 
     return(
-        <main>
+        <PageContainer>
             <div>
                 <ul>
                     {listIngredients()}
@@ -58,8 +60,19 @@ function ResultPage() {
                     {recipeCards ? listRecipes() : null}
                 </ul>
             </div>
-        </main>
+        </PageContainer>
     )
 }
+
+const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #7a949c;
+  color: #efefef;
+  padding: 1.2rem;
+  min-height: 100vh;
+`;
 
 export default ResultPage
