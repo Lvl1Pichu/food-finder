@@ -32,6 +32,7 @@ export default function StartPage() {
     navigate(`/result/${params}`);
   };
   
+  // Toggle visibility of the help panel.
   const openHelp = () => {
     setHelpOpen(true)
   }
@@ -52,10 +53,10 @@ export default function StartPage() {
           removeIngredient={handleRemoveIngredient} 
           addIngredient={handleAddIngredient}
         />
-        <Button label={"Search Recipes"} onClick={handleSearch}></Button>
-        <Help className={helpOpen ? "open" : "closed"}>Help
+        <Button label={"Search Recipes"} onClick={handleSearch} disabled={!ingredients.length}></Button>
+        <HelpPanel className={helpOpen ? "open" : ""}>Help
           <HelpButton onClick={closeHelp}>X</HelpButton>
-        </Help>
+        </HelpPanel>
       </PageContainer>
   )
 }
@@ -100,7 +101,7 @@ const HelpButton = styled.button`
 `
 
 
-const Help = styled.div`
+const HelpPanel = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -112,12 +113,9 @@ const Help = styled.div`
   right: 5%;
   padding: 2rem 5%;
   background: #c0c0c0;
-  transition: transform 300ms cubic-bezier(1, 3, 3, 1);
+  transform: translateY(110%);
+  transition: transform 300ms ease-in-out;
   &.open {
     transform: translateY(0%);
-  }
-  
-  &.closed {
-    transform: translateY(110%);
   }
 `
