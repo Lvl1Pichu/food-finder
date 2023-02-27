@@ -1,9 +1,9 @@
 import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import './App.css';
-import HeaderComponent from './componets/HeaderComponent';
-import Output from './Output';
 
-function App() {
+
+export default function App() {
 
   const [recipe, setRecipe] = useState('');
 
@@ -22,14 +22,14 @@ function App() {
     .then((r) => r.json())
     .then((data) => setRecipe(data[0].title));
   }
-  
 
   return (
     <div className="App">
-      <HeaderComponent getRecipe={getRecipe}></HeaderComponent>
-      <Output recipeTitle={recipe ? recipe : 'Select an ingredient to search for.'}></Output>
-    </div>
+      {/* <HeaderComponent getRecipe={getRecipe}></HeaderComponent>
+      <Output recipeTitle={recipe ? recipe : 'Select an ingredient to search for.'}></Output> */}
+      <main>
+        <Outlet />
+      </main>
+      </div>
   )
 }
-
-export default App

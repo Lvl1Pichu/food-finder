@@ -20,15 +20,14 @@ function Button(props: ButtonProps) {
 export default Button;
 
 const StyledButton = styled.button`
-  background-color: #fff;
-  border: 2px solid black;
+  background-color: var(--light-clr);
+  border: none;
   padding: 14px 26px;
   border-radius: 200px;
   font-size: 20px;
   cursor: pointer;
-  margin-top: 2rem;
 
   &:hover {
-    background: pink;
+    background: var(--light-clr-hover);
   }
 `;
