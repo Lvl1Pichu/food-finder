@@ -10,7 +10,7 @@ const router =  createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       
-      <Route path="/start-page" element={<StartPage/>} />
+      <Route path="" element={<StartPage/>} />
       <Route path="/result-page" element={<ResultPage/>} />
       <Route path="*" element={<h2>404 not found</h2>} />
 
