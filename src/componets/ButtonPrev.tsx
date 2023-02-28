@@ -1,18 +1,26 @@
-import styled from "styled-components";
-
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 interface PrevProps {
-    label: string;
-    onClick: () => void;
-    disabled?: boolean;
-  }
+  label: string;
+}
 
 function ButtonPrev(props: PrevProps) {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(-1);
+  };
+  return (
+    <StyledButtonPrev onClick={handleClick}>
+      {props.label}
+    </StyledButtonPrev>
+  );
 }
+
 
 export default ButtonPrev
 
 
-const PrevButton = styled.button`
+const StyledButtonPrev = styled.button`
   background-color: var(--light-clr);
   border: none;
   padding: 14px 26px;
