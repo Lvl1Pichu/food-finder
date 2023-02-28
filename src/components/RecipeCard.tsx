@@ -1,6 +1,8 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 interface RecipeCardProps {
+  id: number;
   image: string;
   title: string;
   missingNum: number;
@@ -15,15 +17,19 @@ const RecipeCard = (props: RecipeCardProps) => {
     return ings.map((ing) => <IngLI key={ing}>{ing}</IngLI>)
   }
 
+  const navigate = useNavigate();
+
+  const openRecipe = () => {
+    navigate("/recipe/" + props.id);
+  }
+
   return (
-    <CardContainer>
+    <CardContainer onClick={openRecipe}>
       <CircleContainer>
         <Circle style={{backgroundImage: "url(" + props.image + ")"}}></Circle>
       </CircleContainer>
-      <RecipeOverlay>
-        <div>
+      <RecipeOverlay className="bg-hover">
           <RecipeTitle>{props.title}</RecipeTitle>
-        </div>
         <TextContainer>
           <IngsNum>Missing {props.missingNum} ingredients:</IngsNum>
           <IngsNum>Uses {props.usingNum} ingredients:</IngsNum>
@@ -49,6 +55,21 @@ const CardContainer = styled.div`
   border-radius: 50%;
   margin-top: 6rem;
   cursor: pointer;
+  transform: scale(100%);
+  transition: transform 200ms ease;
+
+  &:hover{
+
+    transform: scale(103%);
+
+    & > div.bg-hover {
+      background-color: #e9e9e9;
+    }
+
+    & > div > p{
+      text-decoration: underline;
+    }
+  }
 `;
 
 const CircleContainer = styled.div`
@@ -62,6 +83,7 @@ const Circle = styled.div`
   width: 100px;
   border-radius: 50%;
   background-size: cover;
+  background-position: center;
   z-index: 10;
   border: 2px solid black;
 `;
@@ -72,6 +94,7 @@ const RecipeOverlay = styled.div`
   width: 100%;
   border-radius: 15px;
   background-color: rgba(255, 255, 255, 1);
+  transition: background-color 200ms ease;
   padding: 1.5rem;
 `;
 
