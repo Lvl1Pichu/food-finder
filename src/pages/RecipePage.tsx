@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import bg from "../assets/bg.jpg";
-import ButtonPrev from "../componets/ButtonPrev";
-import RecipeInformation from "../componets/RecipeInformation";
+import ButtonPrev from "../components/ButtonPrev";
+import RecipeInformation from "../components/RecipeInformation";
 
 
 function RecipePage() {
