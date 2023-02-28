@@ -45,7 +45,8 @@ function ResultPage() {
      */
     function listRecipes() {
         if (recipeCards)
-        return recipeCards.map((r) => {return <li key={r.title}>{r.title}</li>})
+        console.log(recipeCards);
+        // return recipeCards.map((r) => {return <li key={r.title}>{r.title}</li>})
     }
 
     return(
@@ -57,7 +58,7 @@ function ResultPage() {
             </div>
             <div>
                 <ul>
-                    {recipeCards ? listRecipes() : null}
+                    {/* {recipeCards ? listRecipes() : null} */}
                 </ul>
             </div>
         </PageContainer>
