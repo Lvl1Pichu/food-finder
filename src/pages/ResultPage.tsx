@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { RecipeCard } from "../interfaces";
 
 
 
 import styled from 'styled-components';
+import ErrorBoundary from "../componets/ErrorBoundary";
 
 function ResultPage() {
     const {ings} = useParams();
@@ -14,21 +15,21 @@ function ResultPage() {
     /**
      * Calls API on change of the ingredients state.
      */
-    useEffect(() => {
-        const options = {
-            // API key: ea186f9a58784d0d86b47956204c76be
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
+    // useEffect(() => {
+    //     const options = {
+    //         // API key: ea186f9a58784d0d86b47956204c76be
+    //         method: "GET",
+    //         headers: {
+    //           "Content-Type": "application/json",
+    //         },
+    //       }
 
-        fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=ea186f9a58784d0d86b47956204c76be&ingredients=${ingredients}&number=3`,
-        options)
-        .then((r) => r.json())
-        .then((data) => setRecipeCards(data));
-    }, [ingredients] 
-    )
+    //     fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=ea186f9a58784d0d86b47956204c76be&ingredients=${ingredients}&number=3`,
+    //     options)
+    //     .then((r) => r.json())
+    //     .then((data) => setRecipeCards(data));
+    // }, [ingredients] 
+    // )
 
     /**
      * Removes hyphens from ingredients params and replaces with spaces.
@@ -46,6 +47,7 @@ function ResultPage() {
     function listRecipes() {
         if (recipeCards)
         return recipeCards.map((r) => {return <li key={r.title}>{r.title}</li>})
+        
     }
 
     return(
@@ -56,9 +58,11 @@ function ResultPage() {
                 </ul>
             </div>
             <div>
-                <ul>
-                    {recipeCards ? listRecipes() : null}
-                </ul>
+                <ErrorBoundary>
+                    <ul>
+                        {recipeCards ? listRecipes() : null}
+                    </ul>
+                </ErrorBoundary>
             </div>
         </PageContainer>
     )

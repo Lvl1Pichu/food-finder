@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import bg from "../assets/bg.jpg";
 import Button from "../componets/Button";
+import ErrorBoundary from "../componets/ErrorBoundary";
 import InputForm from "../componets/InputForm";
 import List from "../componets/List";
 
@@ -31,7 +32,9 @@ export default function StartPage() {
   return (
       <PageContainer>
         <h1>Find a recipe that fits your needs!</h1>
-        <InputForm onSubmit={handleAddIngredient} />
+        <ErrorBoundary>
+          <InputForm onSubmit={handleAddIngredient} />
+        </ErrorBoundary>
         <List 
           ingredients={ingredients} 
           removeIngredient={handleRemoveIngredient} 

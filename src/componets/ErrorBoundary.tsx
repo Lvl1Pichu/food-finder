@@ -1,4 +1,5 @@
 import { Component, ReactNode } from "react";
+import styled from "styled-components";
 
 
 
@@ -24,12 +25,25 @@ export default class ErrorBoundary extends Component<EBProps, EBState> {
         console.log(error, errorInfo);
     }
 
+    reload = () => {
+        location.reload();
+    }
+
     render() {
         if (this.state.hasError) {
         return (
+            <div>
             <h2>Something went wrong.</h2>
+            <p>Please <Reload onClick={this.reload}>reload</Reload> the page</p>
+            </div>
         )
         }
         return this.props.children;
     }
 }
+
+const Reload = styled.span`
+    text-decoration: underline;
+    color: #7a949c;
+    cursor: pointer;
+`
