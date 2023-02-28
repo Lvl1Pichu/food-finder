@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import bg from "../assets/bg.jpg";
 import ButtonPrev from "../componets/ButtonPrev";
@@ -5,6 +6,9 @@ import RecipeInformation from "../componets/RecipeInformation";
 
 
 function RecipePage() {
+
+    const [ingredients, setIngredients] = useState([]);
+
     return (
         <PageContainer>
             <ButtonContainer>
