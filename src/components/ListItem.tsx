@@ -1,3 +1,4 @@
+import { MouseEventHandler } from 'react';
 import styled from 'styled-components';
 
 const ListItemContainer = styled.div`
@@ -29,11 +30,16 @@ const ListItemDeleteButton = styled.button`
   cursor: pointer;
 `;
 
-const ListItem = ({ text, onDelete }: { text: string, onDelete: () => void }) => {
+interface LIProps {
+  text: string;
+  onDelete: MouseEventHandler<HTMLButtonElement>;
+}
+
+const ListItem = (props: LIProps) => {
   return (
     <ListItemContainer>
-      <ListItemText>Lorus Ipsum</ListItemText>
-      <ListItemDeleteButton onClick={onDelete}>✕</ListItemDeleteButton>
+      <ListItemText>{props.text}</ListItemText>
+      <ListItemDeleteButton onClick={props.onDelete}>✕</ListItemDeleteButton>
     </ListItemContainer>
   );
 };

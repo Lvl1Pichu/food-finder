@@ -1,8 +1,22 @@
-import React from 'react';
 import styled from 'styled-components';
 import food from "../assets/food.jpg";
 
-const RecipeCard = styled.div`
+const RecipeCard = () => {
+  return (
+    <CardContainer>
+      <CircleContainer>
+        <Circle></Circle>
+      </CircleContainer>
+      <RecipeOverlay>
+        <div>
+          <RecipeTitle>Hamburger</RecipeTitle>
+        </div>
+      </RecipeOverlay>
+    </CardContainer>
+  );
+};
+
+const CardContainer = styled.div`
   position: relative;
   width: 250px;
   height: 250px;
@@ -44,19 +58,4 @@ const RecipeTitle = styled.p`
   margin-top: 3.1rem;
 `;
 
-const RecipeComponent = () => {
-  return (
-    <RecipeCard>
-      <CircleContainer>
-        <Circle></Circle>
-      </CircleContainer>
-      <RecipeOverlay>
-        <div>
-          <RecipeTitle>Hamburger</RecipeTitle>
-        </div>
-      </RecipeOverlay>
-    </RecipeCard>
-  );
-};
-
-export default RecipeComponent;
+export default RecipeCard;
