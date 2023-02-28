@@ -6,6 +6,7 @@ import bg from "../assets/bg.jpg";
 
 
 import ButtonPrev from "../components/ButtonPrev";
+import RecipeCard from "../components/RecipeCard";
 import { IRecipeCard } from "../interfaces";
 
 export default function ResultPage() {
@@ -63,11 +64,9 @@ export default function ResultPage() {
                     {list}
                 </ul>
             </div>
-            <div>
-                <ul>
-                    {/* {recipeCards ? listRecipes() : null} */}
-                </ul>
-            </div>
+            <RecipesContainer>
+                <RecipeCard image="https://spoonacular.com/recipeImages/73420-312x231.jpg" title={"Title"} missingNum={3} usingNum={3} missingIngs={["milk", "flour", "honey"]} usingIngs={["milk", "flour", "honey"]}/>
+            </RecipesContainer>
         </PageContainer>
     )
 }
