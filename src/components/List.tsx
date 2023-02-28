@@ -2,7 +2,7 @@ import styled from "styled-components";
 import removeIcon from "../assets/remove.svg";
 interface Props {
     ingredients: string[];
-    addIngredient: (ingredient: string) => void;
+    addIngredient?: (ingredient: string) => void;
     removeIngredient: (ingredientToBeRemoved: string) => void;
   }
 

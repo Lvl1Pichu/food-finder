@@ -1,5 +1,5 @@
-function RecipePage() {
-    
+export default function RecipePage () {
+    return  (
+        null
+    )
 }
-
-export default RecipePage

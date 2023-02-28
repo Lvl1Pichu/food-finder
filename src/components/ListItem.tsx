@@ -1,38 +1,45 @@
+import { MouseEventHandler } from 'react';
 import styled from 'styled-components';
 
 const ListItemContainer = styled.div`
   position: relative;
   padding: 10px;
   margin-bottom: 10px;
-  border-radius: 25%;
-  opacity: 0.35;
-  background-color: white;
+  border-radius: 200px;
+  background: rgba(255, 255, 255, 0.35);
+  width: 200px;
 `;
 
 const ListItemText = styled.p`
   margin: 0;
   line-height: 1.5;
+  color: white;
 `;
 
 const ListItemDeleteButton = styled.button`
   position: absolute;
   top: 50%;
-  right: 10px;
   transform: translateY(-50%);
+  right: 10px;
   width: 20px;
   height: 20px;
   border: none;
   background-color: transparent;
   font-size: 16px;
-  color: red;
+  color: black;
   cursor: pointer;
 `;
 
-const ListItem = ({ text, onDelete }: { text: string, onDelete: () => void }) => {
+interface LIProps {
+  text: string;
+  onDelete: MouseEventHandler<HTMLButtonElement>;
+}
+
+const ListItem = (props: LIProps) => {
   return (
     <ListItemContainer>
-      <ListItemText>{text}</ListItemText>
-      <ListItemDeleteButton onClick={onDelete}>✕</ListItemDeleteButton>
+      <ListItemText>{props.text}</ListItemText>
+      <ListItemDeleteButton onClick={props.onDelete}>✕</ListItemDeleteButton>
     </ListItemContainer>
   );
 };
