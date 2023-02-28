@@ -5,6 +5,7 @@ import { RecipeCard } from "../interfaces";
 
 
 import styled from 'styled-components';
+import ButtonPrev from "../componets/ButtonPrev";
 
 function ResultPage() {
     const {ings} = useParams();
@@ -51,6 +52,8 @@ function ResultPage() {
 
     return(
         <PageContainer>
+            <ButtonPrev label={"Back"}></ButtonPrev>
+
             <div>
                 <ul>
                     {listIngredients()}
