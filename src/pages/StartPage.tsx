@@ -45,11 +45,11 @@ export default function StartPage() {
 
   return (
       <PageContainer>
-        <h1>Find a recipe that fits your needs!</h1>
-        <InputContainer>
-        <InputForm onSubmit={handleAddIngredient} />
+        <ButtonContainer>
           <HelpButton content="i" onClick={openHelp}></HelpButton>
-        </InputContainer>
+        </ButtonContainer>
+        <h1>Find a recipe that fits your needs!</h1>
+        <InputForm onSubmit={handleAddIngredient} />
         <List 
           ingredients={ingredients} 
           removeIngredient={handleRemoveIngredient} 
@@ -82,6 +82,8 @@ const PageContainer = styled.div`
   }
 `;
 
-const InputContainer = styled.div`
-  display: flex;
+const ButtonContainer = styled.div`
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
 `

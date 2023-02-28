@@ -46,7 +46,6 @@ const StyledInputForm = styled.input`
 
 const StyledForm = styled.form`
   position: relative;
-  flex: 1;
   margin-right: 1rem;
 `;
 
