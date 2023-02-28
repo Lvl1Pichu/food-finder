@@ -47,6 +47,7 @@ const CardContainer = styled.div`
   width: 100%;
   height: 250px;
   border-radius: 50%;
+  margin-top: 6rem;
   cursor: pointer;
 `;
 
