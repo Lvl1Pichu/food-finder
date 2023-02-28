@@ -26,8 +26,14 @@ function ResultPage() {
 
     //     fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=ea186f9a58784d0d86b47956204c76be&ingredients=${ingredients}&number=3`,
     //     options)
-    //     .then((r) => r.json())
-    //     .then((data) => setRecipeCards(data));
+    //     .then((r) => {
+    //         if (!r.ok) throw new Error("")
+    //         return r.json()
+    //     })
+    //     .then((data) => setRecipeCards(data))
+    //     .catch(() => {
+    //         // setError("Tyvärr....")
+    //     });
     // }, [ingredients] 
     // )
 
@@ -36,10 +42,7 @@ function ResultPage() {
      * Separates ingredients by ',+'.
      * Return array of li elements with ingrdient names as content and keys.
      */
-    function listIngredients() {
-        if(ings)
-        return ings.replace("-", " ").split(",+").map(ing => <li key={ing}>{ing}</li>);
-    }
+    const list = ings?.replace("-", " ").split(",+").map(ing => <li key={ing}>{ing}</li>);
 
     /**
      * Returns array of list items for each recipe in the state.
@@ -56,7 +59,7 @@ function ResultPage() {
 
             <div>
                 <ul>
-                    {listIngredients()}
+                    {list}
                 </ul>
             </div>
             <div>
