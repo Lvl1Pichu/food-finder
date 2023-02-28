@@ -3,11 +3,12 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import bg from "../assets/bg.jpg";
 import RecipeCard from "../components/RecipeCard";
+import { IRecipeCard } from "../interfaces";
 
 export default function ResultPage() {
         const {ings} = useParams();
         const [ingredients, setIngredients] = useState(ings);
-        const [recipeCards, setRecipeCards] = useState<RecipeCard[]>();
+        const [recipeCards, setRecipeCards] = useState<IRecipeCard[]>();
     
         /**
          * Calls API on change of the ingredients state.
@@ -35,7 +36,7 @@ export default function ResultPage() {
          */
         function listIngredients() {
             if(ings)
-            return ings.replace("-", " ").split(",+").map((ing) => <IngLI>{ing}</IngLI>)
+            return ings.replace("-", " ").split(",+").map((ing) => <IngLI key={ing}>{ing}</IngLI>)
         }
     
         /**
@@ -54,10 +55,7 @@ export default function ResultPage() {
         </IngredientsList>
         
         <RecipesContainer>
-            <RecipeCard/>
-            <RecipeCard/>
-            <RecipeCard/>
-            <RecipeCard/>
+            <RecipeCard image="https://spoonacular.com/recipeImages/73420-312x231.jpg" title={"Title"} missingNum={3} usingNum={3} missingIngs={["milk", "flour", "honey"]} usingIngs={["milk", "flour", "honey"]}/>
         </RecipesContainer>
     </PageContainer>
 )
@@ -75,6 +73,7 @@ const PageContainer = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  overflow-y: scroll;
 `;
 
 const IngredientsList = styled.ul`
@@ -85,7 +84,7 @@ const IngredientsList = styled.ul`
     flex-direction: row;
     flex-wrap: wrap;
     margin: 0;
-    padding-top: 1.5rem;
+    padding: 1.5rem 0;
 `;
 
 const IngLI = styled.li`
@@ -98,6 +97,7 @@ const IngLI = styled.li`
 `
 
 const RecipesContainer = styled.div`
-    overflow-y: scroll;
     max-height: 600px;
+    width: 90%;
+    max-width: 500px;
 `
