@@ -46,6 +46,7 @@ const StyledInputForm = styled.input`
 
 const StyledForm = styled.form`
   position: relative;
+  margin-right: 1rem;
 `;
 
 const StyledSubmitButton = styled.button`
