@@ -25,23 +25,16 @@ const RecipeCard = (props: RecipeCardProps) => {
           <RecipeTitle>{props.title}</RecipeTitle>
         </div>
         <TextContainer>
-          <div>
-          <IngsNum>Missing {props.missingNum} ingredients.</IngsNum>
+          <IngsNum>Missing {props.missingNum} ingredients:</IngsNum>
+          <IngsNum>Uses {props.usingNum} ingredients:</IngsNum>
           <ul>
-            Missing:
             {listIngs(props.missingIngs)}
           </ul>
-
-          </div>
-          <div>
-          <IngsNum>Uses {props.usingNum} ingredients.</IngsNum>
           <ul>
-            Using:
             {listIngs(props.usingIngs)}
 
           </ul>
 
-          </div>
 
         </TextContainer>
       </RecipeOverlay>
@@ -54,6 +47,7 @@ const CardContainer = styled.div`
   width: 100%;
   height: 250px;
   border-radius: 50%;
+  cursor: pointer;
 `;
 
 const CircleContainer = styled.div`
@@ -77,6 +71,7 @@ const RecipeOverlay = styled.div`
   width: 100%;
   border-radius: 15px;
   background-color: rgba(255, 255, 255, 1);
+  padding: 1.5rem;
 `;
 
 const RecipeTitle = styled.p`
@@ -90,10 +85,12 @@ const RecipeTitle = styled.p`
 
 const TextContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
 
-  & div {
+  & > * {
+    color: black;
     width: 50%;
-    padding: 0 0.5rem;
+    padding: 0;
   }
 `
 
