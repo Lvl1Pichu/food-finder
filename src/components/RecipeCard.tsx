@@ -1,5 +1,5 @@
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 interface RecipeCardProps {
   id: number;
@@ -11,37 +11,33 @@ interface RecipeCardProps {
   usingIngs: string[];
 }
 
-const RecipeCard = (props: RecipeCardProps) => {
-
+export default function RecipeCard (props: RecipeCardProps) {
   const listIngs = (ings: string[]) => {
-    return ings.map((ing) => <IngLI key={ing}>{ing}</IngLI>)
-  }
+    return ings.map((ing) => <IngLI key={ing}>{ing}</IngLI>);
+  };
 
   const navigate = useNavigate();
 
   const openRecipe = () => {
     navigate("/recipe/" + props.id);
-  }
-
+  };
+  
   return (
     <CardContainer onClick={openRecipe}>
       <CircleContainer>
-        <Circle style={{backgroundImage: "url(" + props.image + ")"}}></Circle>
+        <Circle
+          style={{ backgroundImage: "url(" + props.image + ")" }}
+        ></Circle>
       </CircleContainer>
       <RecipeOverlay className="bg-hover">
-          <RecipeTitle>{props.title}</RecipeTitle>
+        <RecipeTitle>{props.title}</RecipeTitle>
         <TextContainer>
           <IngsNum>Missing {props.missingNum} ingredients:</IngsNum>
           <IngsNum>Uses {props.usingNum} ingredients:</IngsNum>
           <ul>
             {listIngs(props.missingIngs)}
           </ul>
-          <ul>
-            {listIngs(props.usingIngs)}
-
-          </ul>
-
-
+          <ul>{listIngs(props.usingIngs)}</ul>
         </TextContainer>
       </RecipeOverlay>
     </CardContainer>
@@ -58,15 +54,14 @@ const CardContainer = styled.div`
   transform: scale(100%);
   transition: transform 200ms ease;
 
-  &:hover{
-
+  &:hover {
     transform: scale(103%);
 
     & > div.bg-hover {
-      background-color: #e9e9e9;
+      background-color: var(--light-clr-hover);
     }
 
-    & > div > p{
+    & > div > p {
       text-decoration: underline;
     }
   }
@@ -76,7 +71,7 @@ const CircleContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-`
+`;
 
 const Circle = styled.div`
   aspect-ratio: 1;
@@ -116,14 +111,10 @@ const TextContainer = styled.div`
     width: 50%;
     padding: 0;
   }
-`
+`;
 
-const IngsNum = styled.h3`
-  
-`
+const IngsNum = styled.h3``;
 
 const IngLI = styled.li`
   list-style: none;
-`
-
-export default RecipeCard;
+`;
