@@ -10,11 +10,10 @@ function RecipePage() {
 
     const { id } = useParams();
     const [ingredients, setIngredients] = useState<string[]>([]);
-    const [recipeCards, setRecipeCards] = useState<any[]>([]);
 
       useEffect(() => {
         if (id){
-        fetch(`https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=ea186f9a58784d0d86b47956204c76be`)
+        fetch(`https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=4cffef25f8784cd18f202dc419218d08`)
           .then(response => response.json())
           .then(data => {
             setIngredients(data.ingredients.map((i: any) => i.name));
@@ -36,8 +35,6 @@ function RecipePage() {
 }
 
 export default RecipePage
-
-
 
 /* width: 90%;
 max-width: calc(500px + 10%);
