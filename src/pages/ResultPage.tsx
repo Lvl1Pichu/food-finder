@@ -2,16 +2,14 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import bg from "../assets/bg.jpg";
-
-
-
 import ButtonPrev from "../components/ButtonPrev";
-import { IRecipeCard } from "../interfaces";
+import RecipeCard from "../components/RecipeCard";
+import testResponse from "../testData";
 
 export default function ResultPage() {
     const {ings} = useParams();
     const [ingredients, setIngredients] = useState(ings);
-    const [recipeCards, setRecipeCards] = useState<IRecipeCard[]>();
+    const [recipeCards, setRecipeCards] = useState(testResponse);
 
     /**
      * Calls API on change of the ingredients state.
@@ -38,21 +36,11 @@ export default function ResultPage() {
     // }, [ingredients] 
     // )
 
-    /**
-     * Removes hyphens from ingredients params and replaces with spaces.
-     * Separates ingredients by ',+'.
-     * Return array of li elements with ingrdient names as content and keys.
-     */
-    const list = ings?.replace("-", " ").split(",+").map(ing => <li key={ing}>{ing}</li>);
+    // Array of list items containing names of ingredients in search.
+    const list = ings?.replace("-", " ").split(",+").map(ing => <IngLI key={ing}>{ing}</IngLI>);
 
-    /**
-     * Returns array of list items for each recipe in the state.
-     */
-    function listRecipes() {
-        if (recipeCards)
-        return recipeCards.map((r) => {return <li key={r.title}>{r.title}</li>})
-        
-    }
+    // Array of recipe cards using API data.
+    const recipes = recipeCards?.map((r) => {return <RecipeCard key={r.id} id={r.id} image={r.image} title={r.title} missingNum={r.missedIngredientCount} usingNum={r.usedIngredientCount} missingIngs={r.missedIngredients.map((ing)=> {return ing.name})} usingIngs={r.usedIngredients.map((ing) => {return ing.name})}/>})
 
     return(
         <PageContainer>
@@ -63,11 +51,9 @@ export default function ResultPage() {
                     {list}
                 </ul>
             </div>
-            <div>
-                <ul>
-                    {recipeCards ? listRecipes() : null}
-                </ul>
-            </div>
+            <RecipesContainer>
+                {recipes};
+            </RecipesContainer>
         </PageContainer>
     )
 }
