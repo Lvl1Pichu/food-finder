@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import bg from "../assets/bg.jpg";
@@ -13,19 +13,19 @@ function RecipePage() {
     const [recipe, setRecipe] = useState<any>(recipeRespons);
 
 
-      // useEffect(() => {
-      //   const fetchData = async () => {
-      //     try {
-      //       const response = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=4cffef25f8784cd18f202dc419218d08`);
-      //       const data = await response.json();
-      //       setRecipe(data);
-      //     } catch (error) {
-      //       console.log(error);
-      //     }
-      //   };
-      //   fetchData();
-      // }, [id]);
-      // console.log(recipe)
+      useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const response = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=4cffef25f8784cd18f202dc419218d08`);
+            const data = await response.json();
+            setRecipe(data);
+          } catch (error) {
+            console.log(error);
+          }
+        };
+        fetchData();
+      }, [id]);
+      console.log(recipe)
 
 
     return (
