@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import ErrorBoundary from "./ErrorBoundary";
 
 interface RecipeCardProps {
   id: number;
@@ -12,7 +11,7 @@ interface RecipeCardProps {
   usingIngs: string[];
 }
 
-const RecipeCard = (props: RecipeCardProps) => {
+export default function RecipeCard (props: RecipeCardProps) {
   const listIngs = (ings: string[]) => {
     return ings.map((ing) => <IngLI key={ing}>{ing}</IngLI>);
   };
@@ -22,14 +21,8 @@ const RecipeCard = (props: RecipeCardProps) => {
   const openRecipe = () => {
     navigate("/recipe/" + props.id);
   };
-
-  const error = () => {
-    throw new Error("EBtest");
-  }
   
-
   return (
-        <ErrorBoundary>
     <CardContainer onClick={openRecipe}>
       <CircleContainer>
         <Circle
@@ -37,7 +30,7 @@ const RecipeCard = (props: RecipeCardProps) => {
         ></Circle>
       </CircleContainer>
       <RecipeOverlay className="bg-hover">
-        <RecipeTitle>{error()}</RecipeTitle>
+        <RecipeTitle>{props.title}</RecipeTitle>
         <TextContainer>
           <IngsNum>Missing {props.missingNum} ingredients:</IngsNum>
           <IngsNum>Uses {props.usingNum} ingredients:</IngsNum>
@@ -48,7 +41,6 @@ const RecipeCard = (props: RecipeCardProps) => {
         </TextContainer>
       </RecipeOverlay>
     </CardContainer>
-          </ErrorBoundary>
   );
 };
 
@@ -66,7 +58,7 @@ const CardContainer = styled.div`
     transform: scale(103%);
 
     & > div.bg-hover {
-      background-color: #e9e9e9;
+      background-color: var(--light-clr-hover);
     }
 
     & > div > p {
@@ -126,5 +118,3 @@ const IngsNum = styled.h3``;
 const IngLI = styled.li`
   list-style: none;
 `;
-
-export default RecipeCard;

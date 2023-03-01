@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import bg from "../assets/bg.jpg";
 import ButtonPrev from "../components/ButtonPrev";
+import ErrorBoundary from "../components/ErrorBoundary";
 import RecipeCard from "../components/RecipeCard";
 import testResponse from "../testData";
 
@@ -45,7 +46,8 @@ export default function ResultPage() {
     // Array of recipe cards using API data.
     const recipes = recipeCards
     ?.map((r) => {
-        return <RecipeCard
+        return <ErrorBoundary>
+        <RecipeCard
          key={r.id} 
          id={r.id} 
          image={r.image} 
@@ -59,23 +61,23 @@ export default function ResultPage() {
             return ing.name;
             })}
             />
+        </ErrorBoundary>
         })
 
     return(
         <PageContainer>
             <ButtonPrev label={"Back"}></ButtonPrev>
             <div>
-                <ul>
+                <IngredientsList>
                     {list}
-                </ul>
+                </IngredientsList>
             </div>
             <RecipesContainer>
-                {recipes};
+                {recipes}
             </RecipesContainer>
         </PageContainer>
     )
 }
-
 
 const PageContainer = styled.div`
   display: flex;

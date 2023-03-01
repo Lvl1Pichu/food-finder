@@ -2,8 +2,6 @@ import { Component, ReactNode } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-
-
 interface EBProps {
     children: ReactNode
 }
@@ -18,7 +16,7 @@ export default class ErrorBoundary extends Component<EBProps, EBState> {
         this.state = {hasError: false};
     }
 
-    static getDerivedStateFromError(error: Error) {
+    static getDerivedStateFromError() {
         return {hasError: true}
     }
 
@@ -26,20 +24,33 @@ export default class ErrorBoundary extends Component<EBProps, EBState> {
         console.log(error, errorInfo);
     }
 
+    reload = () => {
+        location.reload();
+    }
+
     render() {
         if (this.state.hasError) {
         return (
-            <div>
+            <ErrorDiv>
             <h2>Something went wrong.</h2>
-            <p>Please return to the <Return><NavLink to="/">home page</NavLink></Return></p>
-            </div>
+            <p>For some reason we are unable to display this content.</p>
+            <p>You can try to either <ClickMe onClick={this.reload}>refresh the page</ClickMe> to return to the <NavLink to="/"><ClickMe>home page</ClickMe></NavLink></p>
+            </ErrorDiv>
         )
         }
         return this.props.children;
     }
 }
 
-const Return = styled.span`
+const ErrorDiv = styled.div`
+    background-color: var(--light-clr);
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 0.3rem;
+    color: black;
+`
+
+const ClickMe = styled.span`
     text-decoration: underline;
     color: #7a949c;
     cursor: pointer;
