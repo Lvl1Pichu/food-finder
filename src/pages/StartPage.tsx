@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import bg from "../assets/bg.jpg";
 import Button from "../componets/Button";
-import ErrorBoundary from "../componets/ErrorBoundary";
 import HelpButton from "../componets/HelpButton";
 import HelpPanel from "../componets/HelpPanel";
 import InputForm from "../componets/InputForm";
@@ -50,9 +49,7 @@ export default function StartPage() {
           <HelpButton content="i" onClick={openHelp}></HelpButton>
         </ButtonContainer>
         <h1>Find a recipe that fits your needs!</h1>
-        <ErrorBoundary>
-          <InputForm onSubmit={handleAddIngredient} />
-        </ErrorBoundary>
+        <InputForm onSubmit={handleAddIngredient} />
         <List 
           ingredients={ingredients} 
           removeIngredient={handleRemoveIngredient} 

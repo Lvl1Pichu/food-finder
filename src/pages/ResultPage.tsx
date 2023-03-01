@@ -5,7 +5,6 @@ import { RecipeCard } from "../interfaces";
 
 
 import styled from 'styled-components';
-import ErrorBoundary from "../componets/ErrorBoundary";
 
 function ResultPage() {
     const {ings} = useParams();
@@ -58,11 +57,9 @@ function ResultPage() {
                 </ul>
             </div>
             <div>
-                <ErrorBoundary>
-                    <ul>
-                        {recipeCards ? listRecipes() : null}
-                    </ul>
-                </ErrorBoundary>
+                <ul>
+                    {recipeCards ? listRecipes() : null}
+                </ul>
             </div>
         </PageContainer>
     )
