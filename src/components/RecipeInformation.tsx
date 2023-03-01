@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import ErrorBoundary from "./ErrorBoundary";
 
 interface Props {
   recipe: any;
@@ -28,13 +29,15 @@ const RecipeInformation: React.FC<Props> = ({ recipe }) => {
       {recipe.instructions && (
         <>
       <h3>Instructions</h3>
-       <ol>
-        {recipe.analyzedInstructions[0].steps.map((step: any) => (
-          <li key={step.number}>
-            {step.step}
-          </li>
-        ))}
-      </ol> 
+      <ErrorBoundary>
+        <ol>
+          {recipe.analyzedInstructions[0].steps.map((step: any) => (
+            <li key={step.number}>
+              {step.step}
+            </li>
+          ))}
+          </ol>
+      </ErrorBoundary>     
       </>
       )}
       <a href={recipe.sourceUrl}>Link to Recipe</a>

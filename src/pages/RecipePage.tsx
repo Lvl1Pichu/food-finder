@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import bg from "../assets/bg.jpg";
 import ButtonPrev from "../components/ButtonPrev";
+import ErrorBoundary from "../components/ErrorBoundary";
 import RecipeInformation from "../components/RecipeInformation";
 import recipeRespons from "../testDataRecipe";
 
@@ -33,7 +34,9 @@ function RecipePage() {
             <ButtonContainer>
               <ButtonPrev label={"Back"}></ButtonPrev>
             </ButtonContainer>
+            <ErrorBoundary>
             <RecipeInformation recipe={recipe}/>
+            </ErrorBoundary>
         </PageContainer>
     )
 }
