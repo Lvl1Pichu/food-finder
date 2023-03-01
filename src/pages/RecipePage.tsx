@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import bg from "../assets/bg.jpg";
 import ButtonPrev from "../components/ButtonPrev";
@@ -7,7 +8,19 @@ import RecipeInformation from "../components/RecipeInformation";
 
 function RecipePage() {
 
-    const [ingredients, setIngredients] = useState([]);
+    const { id } = useParams();
+    const [ingredients, setIngredients] = useState<string[]>([]);
+
+      useEffect(() => {
+        if (id){
+        fetch(`https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=4cffef25f8784cd18f202dc419218d08`)
+          .then(response => response.json())
+          .then(data => {
+            setIngredients(data.ingredients.map((i: any) => i.name));
+          })
+          .catch(error => console.error(error));
+        }
+      }, [id]);
 
     return (
         <PageContainer>
@@ -15,15 +28,13 @@ function RecipePage() {
             <ButtonPrev label={"Back"}></ButtonPrev>
             </ButtonContainer>
             <h1>Recipe</h1>
-            <RecipeInformation/>
+            <RecipeInformation ingredients={ingredients} />
             <StyledRecipeButton>Link to recipe</StyledRecipeButton>
         </PageContainer>
     )
 }
 
 export default RecipePage
-
-
 
 /* width: 90%;
 max-width: calc(500px + 10%);

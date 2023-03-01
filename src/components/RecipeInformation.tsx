@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
-function RecipeInformation() {
-    const ingredients = ["Avocado", "Milk", "Butter"];
-  
+interface Props {
+  ingredients: string[];
+}
+
+function RecipeInformation(props: Props) {
+
     return (
       <StyledIngredientList>
         <ul>
-          {ingredients.map((ingredient) => (
+          {props.ingredients.map((ingredient) => (
             <li key={ingredient}>{ingredient}</li>
           ))}
         </ul>

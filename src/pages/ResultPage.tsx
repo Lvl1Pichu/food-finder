@@ -37,15 +37,33 @@ export default function ResultPage() {
     // )
 
     // Array of list items containing names of ingredients in search.
-    const list = ings?.replace("-", " ").split(",+").map(ing => <IngLI key={ing}>{ing}</IngLI>);
+    const list = ings
+    ?.replace("-", " ")
+    .split(",+")
+    .map(ing => <IngLI key={ing}>{ing}</IngLI>);
 
     // Array of recipe cards using API data.
-    const recipes = recipeCards?.map((r) => {return <RecipeCard key={r.id} id={r.id} image={r.image} title={r.title} missingNum={r.missedIngredientCount} usingNum={r.usedIngredientCount} missingIngs={r.missedIngredients.map((ing)=> {return ing.name})} usingIngs={r.usedIngredients.map((ing) => {return ing.name})}/>})
+    const recipes = recipeCards
+    ?.map((r) => {
+        return <RecipeCard
+         key={r.id} 
+         id={r.id} 
+         image={r.image} 
+         title={r.title} 
+         missingNum={r.missedIngredientCount} 
+         usingNum={r.usedIngredientCount} 
+         missingIngs={r.missedIngredients.map((ing)=> {
+            return ing.name;
+        })} 
+        usingIngs={r.usedIngredients.map((ing) => {
+            return ing.name;
+            })}
+            />
+        })
 
     return(
         <PageContainer>
             <ButtonPrev label={"Back"}></ButtonPrev>
-
             <div>
                 <ul>
                     {list}
