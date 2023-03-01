@@ -17,7 +17,12 @@ const RecipeInformation: React.FC<Props> = ({ recipe }) => {
       <ul>
         {recipe.extendedIngredients.map((ingredient: any) => (
           <li key={ingredient.id}>
+            <span>
+            {ingredient.amount}
+            </span>
+            <span>
             {ingredient.name}
+            </span>
           </li>
         ))}
       </ul>
@@ -70,7 +75,8 @@ const StyledRecipeContainer= styled.div`
 
   & li {
     padding: 0.8rem;
-    
+    display: flex;
+    gap: 0.5rem;
   }
 
   & h2 {
