@@ -66,7 +66,6 @@ const StyledRecipeContainer= styled.div`
     margin: 0;
     padding: 0;
     list-style: none;
-    max-height: 280px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
