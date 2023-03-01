@@ -4,32 +4,36 @@ import styled from "styled-components";
 import bg from "../assets/bg.jpg";
 import ButtonPrev from "../components/ButtonPrev";
 import RecipeInformation from "../components/RecipeInformation";
+import recipeRespons from "../testDataRecipe";
 
 
 function RecipePage() {
 
     const { id } = useParams();
-    const [ingredients, setIngredients] = useState<string[]>([]);
+    const [recipe, setRecipe] = useState<any>(recipeRespons);
+
 
       useEffect(() => {
-        if (id){
-        fetch(`https://api.spoonacular.com/recipes/${id}/ingredientWidget.json?apiKey=4cffef25f8784cd18f202dc419218d08`)
-          .then(response => response.json())
-          .then(data => {
-            setIngredients(data.ingredients.map((i: any) => i.name));
-          })
-          .catch(error => console.error(error));
-        }
+        const fetchData = async () => {
+          try {
+            const response = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=4cffef25f8784cd18f202dc419218d08`);
+            const data = await response.json();
+            setRecipe(data);
+          } catch (error) {
+            console.log(error);
+          }
+        };
+        fetchData();
       }, [id]);
+      console.log(recipe)
+
 
     return (
         <PageContainer>
             <ButtonContainer>
             <ButtonPrev label={"Back"}></ButtonPrev>
             </ButtonContainer>
-            <h1>Recipe</h1>
-            <RecipeInformation ingredients={ingredients} />
-            <StyledRecipeButton>Link to recipe</StyledRecipeButton>
+            <RecipeInformation recipe={recipe}/>
         </PageContainer>
     )
 }
