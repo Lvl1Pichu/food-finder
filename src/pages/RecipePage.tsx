@@ -31,7 +31,7 @@ function RecipePage() {
     return (
         <PageContainer>
             <ButtonContainer>
-            <ButtonPrev label={"Back"}></ButtonPrev>
+              <ButtonPrev label={"Back"}></ButtonPrev>
             </ButtonContainer>
             <RecipeInformation recipe={recipe}/>
         </PageContainer>
