@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { RecipeCard } from "../interfaces";
+import styled from "styled-components";
+import bg from "../assets/bg.jpg";
 
 
 
-import styled from 'styled-components';
+import ButtonPrev from "../components/ButtonPrev";
+import { IRecipeCard } from "../interfaces";
 
-function ResultPage() {
+export default function ResultPage() {
     const {ings} = useParams();
     const [ingredients, setIngredients] = useState(ings);
-    const [recipeCards, setRecipeCards] = useState<RecipeCard[]>();
+    const [recipeCards, setRecipeCards] = useState<IRecipeCard[]>();
 
     /**
      * Calls API on change of the ingredients state.
@@ -25,8 +27,14 @@ function ResultPage() {
 
     //     fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=ea186f9a58784d0d86b47956204c76be&ingredients=${ingredients}&number=3`,
     //     options)
-    //     .then((r) => r.json())
-    //     .then((data) => setRecipeCards(data));
+    //     .then((r) => {
+    //         if (!r.ok) throw new Error("")
+    //         return r.json()
+    //     })
+    //     .then((data) => setRecipeCards(data))
+    //     .catch(() => {
+    //         // setError("Tyvärr....")
+    //     });
     // }, [ingredients] 
     // )
 
@@ -35,10 +43,7 @@ function ResultPage() {
      * Separates ingredients by ',+'.
      * Return array of li elements with ingrdient names as content and keys.
      */
-    function listIngredients() {
-        if(ings)
-        return ings.replace("-", " ").split(",+").map(ing => <li key={ing}>{ing}</li>);
-    }
+    const list = ings?.replace("-", " ").split(",+").map(ing => <li key={ing}>{ing}</li>);
 
     /**
      * Returns array of list items for each recipe in the state.
@@ -51,9 +56,11 @@ function ResultPage() {
 
     return(
         <PageContainer>
+            <ButtonPrev label={"Back"}></ButtonPrev>
+
             <div>
                 <ul>
-                    {listIngredients()}
+                    {list}
                 </ul>
             </div>
             <div>
@@ -65,15 +72,43 @@ function ResultPage() {
     )
 }
 
+
 const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  background-color: #7a949c;
+  background-color: #141414;
   color: #efefef;
-  padding: 1.2rem;
   min-height: 100vh;
+  background-image: url(${bg});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow-y: scroll;
 `;
 
-export default ResultPage
+const IngredientsList = styled.ul`
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 1.5rem 0;
+`;
+
+const IngLI = styled.li`
+    list-style: none;
+    padding: 5px;
+    border-radius: 5px;
+    background: var(--light-clr);
+    color: black;
+    margin: 3px;
+`
+
+const RecipesContainer = styled.div`
+    max-height: 600px;
+    width: 90%;
+    max-width: 500px;
+`
