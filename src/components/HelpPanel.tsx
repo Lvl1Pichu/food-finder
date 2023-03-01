@@ -39,6 +39,7 @@ const Panel = styled.div`
   max-width: calc(500px + 10%);
   padding: 2rem 5%;
   background: #c0c0c0;
+  border-radius: 2rem;
   transform: translateY(-200%) translateX(-50%);
   transition: transform 300ms ease-in-out;
   &.open {

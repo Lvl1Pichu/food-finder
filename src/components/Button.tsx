@@ -30,4 +30,8 @@ const StyledButton = styled.button`
   &:hover {
     background: var(--light-clr-hover);
   }
+
+  &:disabled {
+    color: #1d1d1d;
+  }
 `;

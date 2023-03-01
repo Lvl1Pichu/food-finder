@@ -80,6 +80,10 @@ const PageContainer = styled.div`
     text-align: center;
     font-weight: 400;
   }
+
+  & form {
+    margin-right: 0;
+  }
 `;
 
 const ButtonContainer = styled.div`
