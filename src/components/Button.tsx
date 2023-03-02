@@ -22,12 +22,19 @@ export default Button;
 const StyledButton = styled.button`
   background-color: var(--light-clr);
   border: none;
-  padding: 14px 26px;
-  border-radius: 200px;
-  font-size: 20px;
+  color: var(--dark-green);
+  padding: 0.875rem 1.625rem;
+  border-radius: 200rem;
+  font-size: 1.25rem;
+  width: 18.375rem;
+  box-shadow: var(--drop-shaddow);
   cursor: pointer;
 
   &:hover {
     background: var(--light-clr-hover);
+  }
+
+  &:disabled {
+    color: var(--dark-green);
   }
 `;

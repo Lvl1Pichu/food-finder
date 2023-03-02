@@ -36,17 +36,18 @@ export default function InputForm(props: Props) {
 }
 
 const StyledInputForm = styled.input`
-  border: 2px solid black;
-  padding: 14px;
-  border-radius: 200px;
-  font-size: 20px;
+  border: 0.125rem solid black;
+  padding: 0.875rem;
+  border-radius: 200rem;
+  width: 18.375rem;
+  font-size: 1.25rem;
   background-color: var(--light-clr);
   border: transparent;
+  box-shadow: var(--drop-shaddow)
 `;
 
 const StyledForm = styled.form`
   position: relative;
-  margin-right: 1rem;
 `;
 
 const StyledSubmitButton = styled.button`
