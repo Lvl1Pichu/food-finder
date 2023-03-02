@@ -28,12 +28,8 @@ export default function RecipeCard({ recipe }: Props) {
       <RecipeOverlay className="bg-hover">
         <RecipeTitle>{recipe.title}</RecipeTitle>
         <TextContainer>
-          <IngsNum>Missing {recipe.missedIngredientCount} ingredients:</IngsNum>
-          <IngsNum>Uses {recipe.usedIngredientCount} ingredients:</IngsNum>
-          <ul>
-            {listIngs(recipe.missedIngredients.map((ing) => ing.name))}
-          </ul>
-          <ul>{listIngs(recipe.usedIngredients.map((ing) => ing.name))}</ul>
+          <IngsNum>Missing {recipe.missedIngredientCount}</IngsNum>
+          <IngsNum>Uses {recipe.usedIngredientCount}</IngsNum>
         </TextContainer>
       </RecipeOverlay>
     </CardContainer>
@@ -71,12 +67,12 @@ const CircleContainer = styled.div`
 
 const Circle = styled.div`
   aspect-ratio: 1;
-  width: 100px;
+  width: 110px;
   border-radius: 50%;
   background-size: cover;
   background-position: center;
   z-index: 10;
-  border: 2px solid black;
+  border: 6px solid white;
 `;
 
 const RecipeOverlay = styled.div`
@@ -87,15 +83,19 @@ const RecipeOverlay = styled.div`
   background-color: rgba(255, 255, 255, 1);
   transition: background-color 200ms ease;
   padding: 1.5rem;
+  text-align: center;
 `;
 
 const RecipeTitle = styled.p`
   margin: 0;
   font-weight: bold;
-  font-size: 16px;
-  color: black;
+  font-size: 35px;
+  color: var(--dark-green);
   text-align: center;
   margin-top: 3.1rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--dark-green);
+  font-family: "IBM Plex Serif", serif;
 `;
 
 const TextContainer = styled.div`
@@ -103,14 +103,19 @@ const TextContainer = styled.div`
   flex-wrap: wrap;
 
   & > * {
-    color: black;
+    color: var(--dark-green);
     width: 50%;
     padding: 0;
   }
 `;
 
-const IngsNum = styled.h3``;
+const IngsNum = styled.h3`
+padding-bottom: 1rem;
+border-bottom: 1px solid var(--dark-green);
+
+`;
 
 const IngLI = styled.li`
   list-style: none;
+  color: var(--dark-green);
 `;
