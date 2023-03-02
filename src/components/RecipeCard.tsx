@@ -1,43 +1,39 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { IRecipe } from "../interfaces";
 
-interface RecipeCardProps {
-  id: number;
-  image: string;
-  title: string;
-  missingNum: number;
-  usingNum: number;
-  missingIngs: string[];
-  usingIngs: string[];
+interface Props {
+  recipe: IRecipe
 }
 
-export default function RecipeCard (props: RecipeCardProps) {
+export default function RecipeCard({ recipe }: Props) {
+  const navigate = useNavigate();
+  
   const listIngs = (ings: string[]) => {
     return ings.map((ing) => <IngLI key={ing}>{ing}</IngLI>);
   };
 
-  const navigate = useNavigate();
 
   const openRecipe = () => {
-    navigate("/recipe/" + props.id);
+    navigate("/recipe/" + recipe.id);
   };
   
   return (
     <CardContainer onClick={openRecipe}>
       <CircleContainer>
         <Circle
-          style={{ backgroundImage: "url(" + props.image + ")" }}
+          style={{ backgroundImage: "url(" + recipe.image + ")" }}
         ></Circle>
       </CircleContainer>
       <RecipeOverlay className="bg-hover">
-        <RecipeTitle>{props.title}</RecipeTitle>
+        <RecipeTitle>{recipe.title}</RecipeTitle>
         <TextContainer>
-          <IngsNum>Missing {props.missingNum} ingredients:</IngsNum>
-          <IngsNum>Uses {props.usingNum} ingredients:</IngsNum>
+          <IngsNum>Missing {recipe.missedIngredientCount} ingredients:</IngsNum>
+          <IngsNum>Uses {recipe.usedIngredientCount} ingredients:</IngsNum>
           <ul>
-            {listIngs(props.missingIngs)}
+            {listIngs(recipe.missedIngredients.map((ing) => ing.name))}
           </ul>
-          <ul>{listIngs(props.usingIngs)}</ul>
+          <ul>{listIngs(recipe.usedIngredients.map((ing) => ing.name))}</ul>
         </TextContainer>
       </RecipeOverlay>
     </CardContainer>

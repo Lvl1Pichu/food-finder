@@ -1,4 +1,4 @@
-export interface IRecipeCard {
+export interface IRecipe {
     id: number;
     image: string;
     title: string;
