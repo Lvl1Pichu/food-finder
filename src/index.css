@@ -12,5 +12,6 @@ body {
 :root {
     --light-clr: rgb(210, 210, 210);
     --light-clr-hover: #ffffff75;
-    --blue: #7A949C;
+    --light-green: #B2BCA2;
+    --dark-green: #2E372E;
 }

@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-interface PrevProps {
+interface Props {
   label: string;
 }
 
-function ButtonPrev(props: PrevProps) {
+function ButtonPrev(props: Props) {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(-1);
