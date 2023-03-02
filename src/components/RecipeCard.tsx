@@ -71,12 +71,12 @@ const CircleContainer = styled.div`
 
 const Circle = styled.div`
   aspect-ratio: 1;
-  width: 100px;
+  width: 110px;
   border-radius: 50%;
   background-size: cover;
   background-position: center;
   z-index: 10;
-  border: 2px solid black;
+  border: 6px solid white;
 `;
 
 const RecipeOverlay = styled.div`
@@ -87,15 +87,18 @@ const RecipeOverlay = styled.div`
   background-color: rgba(255, 255, 255, 1);
   transition: background-color 200ms ease;
   padding: 1.5rem;
+  text-align: center;
 `;
 
 const RecipeTitle = styled.p`
   margin: 0;
   font-weight: bold;
-  font-size: 16px;
-  color: black;
+  font-size: 20px;
+  color: var(--dark-green);
   text-align: center;
   margin-top: 3.1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--dark-green)
 `;
 
 const TextContainer = styled.div`
@@ -103,7 +106,7 @@ const TextContainer = styled.div`
   flex-wrap: wrap;
 
   & > * {
-    color: black;
+    color: var(--dark-green);
     width: 50%;
     padding: 0;
   }
@@ -113,4 +116,5 @@ const IngsNum = styled.h3``;
 
 const IngLI = styled.li`
   list-style: none;
+  color: var(--dark-green);
 `;
