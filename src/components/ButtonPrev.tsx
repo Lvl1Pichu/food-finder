@@ -4,7 +4,7 @@ interface Props {
   label: string;
 }
 
-function ButtonPrev(props: Props) {
+export default function ButtonPrev(props: Props) {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(-1);
@@ -17,11 +17,9 @@ function ButtonPrev(props: Props) {
 }
 
 
-export default ButtonPrev
-
-
 const StyledButtonPrev = styled.button`
   background-color: var(--light-clr);
+  color: var(--dark-green);
   border: none;
   padding: 14px 26px;
   border-radius: 200px;
