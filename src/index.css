@@ -10,9 +10,9 @@ body {
 }
 
 :root {
-    --light-clr: rgb(243, 243, 243);
-    --light-clr-hover: #fff;
+    --light-clr: #eeeeee;
+    --light-clr-hover: #ffffff;
     --light-green: #B2BCA2;
     --dark-green: #2E372E;
-    --drop-shaddow: 3px 3px 10px 5px #2e372e25;
+    --drop-shadow: 3px 3px 7px 5px #2e372e49;
 }

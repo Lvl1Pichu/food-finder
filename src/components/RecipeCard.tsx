@@ -36,6 +36,8 @@ const CardContainer = styled.div`
   width: 100%;
   height: 250px;
   border-radius: 50%;
+  margin-bottom: 9rem;
+  margin-top: 1rem;
   cursor: pointer;
   transform: scale(100%);
   transition: transform 200ms ease;
