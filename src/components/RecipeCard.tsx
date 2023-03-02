@@ -34,10 +34,7 @@ export default function RecipeCard({ recipe }: Props) {
 const CardContainer = styled.div`
   position: relative;
   width: 100%;
-  height: 250px;
   border-radius: 50%;
-  margin-bottom: 9rem;
-  margin-top: 1rem;
   cursor: pointer;
   transform: scale(100%);
   transition: transform 200ms ease;
@@ -69,11 +66,12 @@ const Circle = styled.div`
   background-position: center;
   z-index: 10;
   border: 6px solid white;
+  top: -55px;
+  position: absolute;
 `;
 
 const RecipeOverlay = styled.div`
-  position: absolute;
-  top: 20%;
+  position: relative;
   width: 100%;
   border-radius: 15px;
   background-color: rgba(255, 255, 255, 1);
@@ -90,8 +88,13 @@ const RecipeTitle = styled.p`
   text-align: center;
   margin-top: 3.1rem;
   padding-top: 2rem;
+  overflow-wrap: break-word;
   border-top: 1px solid var(--dark-green);
   font-family: "IBM Plex Serif", serif;
+
+  @media (max-width: 450px){
+    font-size: 24px;
+  }
 `;
 
 const TextContainer = styled.div`
@@ -106,9 +109,12 @@ const TextContainer = styled.div`
 `;
 
 const IngsNum = styled.h3`
-padding-bottom: 1rem;
-border-bottom: 1px solid var(--dark-green);
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--dark-green);
 
+@media (max-width: 450px){
+    font-size: 15px;
+  }
 `;
 
 const IngLI = styled.li`

@@ -17,4 +17,5 @@ const StyledContainer = styled.div`
     padding: 1.2rem;
     min-height: 100vh;
     background: var(--light-green);
+    position: relative;
 `

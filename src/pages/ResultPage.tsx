@@ -82,6 +82,7 @@ const IngredientsList = styled.ul`
     flex-wrap: wrap;
     padding: 1.5rem 0;
     margin-top: 2rem;
+    margin-bottom: 4rem;
     color: var(--dark-green);
 `;
 
@@ -100,16 +101,11 @@ const RecipesContainer = styled.div`
     flex-direction: column;
     gap: 6rem;
     max-width: 500px;
-    padding-bottom: 6rem;
-
-    @media (max-width:515px){
-        gap: 8rem;
-        padding-bottom: 8rem;
-    }
+    padding-bottom: 3rem;
 
     @media (max-width:360px){
-        gap: 10rem;
-        padding-bottom: 10rem;
+        gap: 5rem;
+        padding-bottom: 2rem;
     }
 `
 
