@@ -1,6 +1,8 @@
 ## food-finder
 A small application that helps you find recipes that matches the ingredients at home.
 
+[See the app here.](https://papaya-lamington-fca010.netlify.app/)
+
 # About
 This project is a response to a brief at Medieinstitutet in Gothenburg. In groups of three, we were tasked with creating a small React app. The purpose of the app was our choice.
 
