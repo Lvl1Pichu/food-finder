@@ -17,7 +17,6 @@ export default function ResultPage() {
      */
     useEffect(() => {
         const options = {
-            // API key: ea186f9a58784d0d86b47956204c76be
             method: "GET",
             headers: {
               "Content-Type": "application/json",
