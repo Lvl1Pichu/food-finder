@@ -40,8 +40,11 @@ export default function ResultPage() {
     return(
         <PageContainer>
             <ErrorBoundary>
-                <ButtonPrev label={"Back"} />
+                <Buttoncontainer>
+                    <ButtonPrev label={"Back"} />
+                </Buttoncontainer>    
                 <IngredientsList>
+                    <p>Recipies with:</p>
                     {
                         /* Array of list items containing names of ingredients in search. */
                         ings
@@ -62,15 +65,24 @@ export default function ResultPage() {
     )
 }
 
+const Buttoncontainer = styled.div`
+   position: absolute;
+   top: 0.6rem;
+   left: 1rem;
+`
+
 const IngredientsList = styled.ul`
     width: 100%;
     max-width: 500px;
     display: flex;
     justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
-    margin: 0;
     padding: 1.5rem 0;
+    margin-top: 2rem;
+    color: var(--dark-green);
 `;
 
 const IngLI = styled.li`
@@ -78,7 +90,7 @@ const IngLI = styled.li`
     padding: 5px;
     border-radius: 5px;
     background: var(--light-clr);
-    color: black;
+    color: var(--dark-green);
     margin: 3px;
 `
 
@@ -86,4 +98,6 @@ const RecipesContainer = styled.div`
     max-height: 600px;
     width: 90%;
     max-width: 500px;
+    margin-top: -2.5rem;
 `
+

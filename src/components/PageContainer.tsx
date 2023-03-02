@@ -16,10 +16,11 @@ const StyledContainer = styled.div`
 position: relative;
 display: flex;
 flex-direction: column;
-justify-content: center;
 align-items: center;
 color: var(--dark-green);
+color: var(--dark-green);
 padding: 1.2rem;
+height: 1000px;
 min-height: 100vh;
 background: var(--light-green);
 overflow-y: scroll;
