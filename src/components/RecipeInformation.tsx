@@ -7,8 +7,7 @@ interface Props {
 const RecipeInformation: React.FC<Props> = ({ recipe }) => {
   return (
     <StyledRecipeContainer>
-      <ImageCircleContainer>
-        <img src={recipe.image} alt={recipe.title} />
+      <ImageCircleContainer style={{backgroundImage: `url(${recipe.image})`}}>
       </ImageCircleContainer>  
       <StyledMetaInfo>
         <span>{recipe.servings} Servings</span>
@@ -19,9 +18,7 @@ const RecipeInformation: React.FC<Props> = ({ recipe }) => {
       <ul>
         {recipe.extendedIngredients.map((ingredient: any) => (
           <li key={ingredient.id}>
-            <span>
             {ingredient.original}
-            </span>
           </li>
         ))}
       </ul>
@@ -34,10 +31,9 @@ const RecipeInformation: React.FC<Props> = ({ recipe }) => {
               {step.step}
             </li>
           ))}
-          </ol>   
+        </ol>   
       </>
       )}
-      <a href={recipe.sourceUrl}>Link to Recipe</a>
     </StyledRecipeContainer>
   );
 };
@@ -46,12 +42,12 @@ export default RecipeInformation
 
 const StyledRecipeContainer= styled.div`
   padding: 1rem;
-  border-radius: 2.1rem;
+  border-radius: 0.5rem;
   font-size: 1.2rem;
   min-width: 8rem;
   background-color: var(--light-clr);
   border: transparent;
-  color: black;
+  color: var(--dark-green);
   width:90%;
   max-width: 31.25rem;
   display: flex;
@@ -60,34 +56,27 @@ const StyledRecipeContainer= styled.div`
   align-items: center;
   margin-top: 90px;
   position: relative;
+  box-shadow: var(--drop-shadow);
 
   & ul {
     margin: 0;
-    padding: 0;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     width: 100%;
-    list-style-type: circle;
   }
 
   & li {
     padding: 0.2rem;
-    display: flex;
     gap: 0.5rem;
-    list-style-type: circle;
   }
 
   & h2 {
-    margin-top: 2rem;
-    margin-bottom: 0.7rem;
+    margin: 0;
+    padding: 4rem 0;
+    font-family: "IBM Plex Serif", serif;
+    border-bottom: 2px solid var(--dark-green);
     text-align: center;
-  }
-
-  & img {
-    width: 200px;
-    height: 170px;
-    border: 1px solid black;
   }
 
   & a {
@@ -99,14 +88,19 @@ const StyledMetaInfo = styled.div`
 display: flex;
 width: 100%;
 justify-content: space-between;
-padding-top: 1rem;
+padding: 1rem 0;
+border-bottom: 2px solid var(--dark-green);
 `
 const ImageCircleContainer = styled.div`
-    width: 170px;
-    height: 170px;
+    width: 30%;
+    aspect-ratio: 1;
+    min-width: 170px;
+    min-height: 170px;
     border-radius: 50%;
+    background-position: center;
+    background-size: cover;
     overflow: hidden;
-    transform: translateY(-100px);
+    transform: translateY(-60%);
     top: 0;
     position: absolute;
     display: flex;
@@ -114,4 +108,3 @@ const ImageCircleContainer = styled.div`
     align-items: center;
     border: 6px solid white;
 `
-

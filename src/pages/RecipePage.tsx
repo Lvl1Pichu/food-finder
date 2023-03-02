@@ -26,7 +26,7 @@ function RecipePage() {
       //   };
       //   fetchData();
       // }, [id]);
-      console.log(recipe)
+      // console.log(recipe)
 
 
     return (
@@ -38,6 +38,10 @@ function RecipePage() {
             <ErrorBoundary>
             <RecipeInformation recipe={recipe}/>
             </ErrorBoundary>
+          <StyledRecipeLink>
+            <StyledLinkText>To recipe</StyledLinkText>
+            <StyledLinkArrow>→</StyledLinkArrow>
+          </StyledRecipeLink>
           </ErrorBoundary>
         </PageContainer>
     )
@@ -45,15 +49,11 @@ function RecipePage() {
 
 export default RecipePage
 
-/* width: 90%;
-max-width: calc(500px + 10%);
-padding: 2rem 5%; */
-
 const ButtonContainer = styled.div`
   position: absolute;
   top: 1rem;
   left: 1rem;
-`;
+`
 
 const StyledRecipeButton = styled.a`
     text-decoration: none;
@@ -71,5 +71,50 @@ const StyledRecipeButton = styled.a`
     &:hover {
     background: var(--light-clr-hover);
     }
-`;
+`
+
+const StyledRecipeLink = styled.div`
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  background-color: var(--light-clr);
+  z-index: 100;
+  box-shadow: var(--drop-shadow);
+  transform: scale(100%);
+  transition-property: transform background-color;
+  transition-duration: 200ms;
+  transition-timing-function: ease;
+  cursor: pointer;
+
+  & p {
+  text-align: center;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  }
+
+  &:hover {
+    transform: scale(105%);
+    background-color: var(--light-clr-hover);
+  }
+
+  &:hover :nth-child(2) {
+    padding-left: 0.5rem;
+  }
+`
+
+const StyledLinkText = styled.p`
+  line-height: 1.2rem;
+  transform: translate(-50%, -75%);
+`
+
+const StyledLinkArrow = styled.p`
+    transform: translate(-50%, 50%);
+    padding-left: 0;
+    transition: padding-left 200ms ease;
+`
     
