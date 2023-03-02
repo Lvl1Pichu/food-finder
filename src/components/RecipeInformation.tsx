@@ -75,7 +75,13 @@ const StyledRecipeContainer= styled.div`
     margin: 0;
     padding: 4rem 0;
     font-family: "IBM Plex Serif", serif;
-    border-bottom: 2px solid var(--dark-green);
+    text-align: center;
+  }
+
+  & h3 {
+    width: 100%;
+    border-top: 2px solid var(--dark-green);
+    padding-top: 2rem;
     text-align: center;
   }
 
