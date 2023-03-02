@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import bg from "../assets/bg.jpg";
 import ButtonPrev from "../components/ButtonPrev";
 import ErrorBoundary from "../components/ErrorBoundary";
+import PageContainer from "../components/PageContainer";
 import RecipeCard from "../components/RecipeCard";
 import testResponse from "../testData";
 
@@ -37,61 +37,30 @@ export default function ResultPage() {
     // }, [ingredients] 
     // )
 
-    // Array of list items containing names of ingredients in search.
-    const list = ings
-    ?.replace("-", " ")
-    .split(",+")
-    .map(ing => <IngLI key={ing}>{ing}</IngLI>);
-
-    // Array of recipe cards using API data.
-    const recipes = recipeCards
-    ?.map((r) => {
-        return <ErrorBoundary>
-        <RecipeCard
-         key={r.id} 
-         id={r.id} 
-         image={r.image} 
-         title={r.title} 
-         missingNum={r.missedIngredientCount} 
-         usingNum={r.usedIngredientCount} 
-         missingIngs={r.missedIngredients.map((ing)=> {
-            return ing.name;
-        })} 
-        usingIngs={r.usedIngredients.map((ing) => {
-            return ing.name;
-            })}
-            />
-        </ErrorBoundary>
-        })
-
     return(
         <PageContainer>
-            <ButtonPrev label={"Back"}></ButtonPrev>
-            <div>
+            <ErrorBoundary>
+                <ButtonPrev label={"Back"} />
                 <IngredientsList>
-                    {list}
+                    {
+                        /* Array of list items containing names of ingredients in search. */
+                        ings
+                            ?.replace("-", " ")
+                            .split(",+")
+                            .map(ing => <IngLI key={ing}>{ing}</IngLI>)
+                    }
                 </IngredientsList>
-            </div>
-            <RecipesContainer>
-                {recipes}
-            </RecipesContainer>
+                <RecipesContainer>
+                    {recipeCards?.map((r) => (
+                        <ErrorBoundary>
+                            <RecipeCard recipe={r} key={r.id} />
+                        </ErrorBoundary>
+                    ))}
+                </RecipesContainer>
+            </ErrorBoundary>
         </PageContainer>
     )
 }
-
-const PageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #141414;
-  color: #efefef;
-  min-height: 100vh;
-  background-image: url(${bg});
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  overflow-y: scroll;
-`;
 
 const IngredientsList = styled.ul`
     width: 100%;

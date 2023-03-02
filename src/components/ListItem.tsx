@@ -30,12 +30,12 @@ const ListItemDeleteButton = styled.button`
   cursor: pointer;
 `;
 
-interface LIProps {
+interface Props {
   text: string;
   onDelete: MouseEventHandler<HTMLButtonElement>;
 }
 
-const ListItem = (props: LIProps) => {
+const ListItem = (props: Props) => {
   return (
     <ListItemContainer>
       <ListItemText>{props.text}</ListItemText>
