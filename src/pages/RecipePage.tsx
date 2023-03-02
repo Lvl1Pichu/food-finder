@@ -37,10 +37,10 @@ function RecipePage() {
             <ErrorBoundary>
             {recipe ?  <RecipeInformation recipe={recipe}/> : ""}
             </ErrorBoundary>
-          <StyledRecipeLink>
-            <StyledLinkText>To recipe</StyledLinkText>
-            <StyledLinkArrow>→</StyledLinkArrow>
-          </StyledRecipeLink>
+            {recipe ? <StyledRecipeLink onClick={window.location.href = recipe.sourceUrl}>
+              <StyledLinkText>To recipe</StyledLinkText>
+              <StyledLinkArrow>→</StyledLinkArrow>
+              </StyledRecipeLink>: "" }
           </ErrorBoundary>
         </PageContainer>
     )
@@ -52,24 +52,6 @@ const ButtonContainer = styled.div`
   position: absolute;
   top: 1rem;
   left: 1rem;
-`
-
-const StyledRecipeButton = styled.a`
-    text-decoration: none;
-    background-color: var(--light-clr);
-    padding: 14px 26px;
-    border-radius: 200px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: black;
-    text-align: center;
-    margin-top: 1rem;
-    width:90%;
-    max-width: 31.25rem;
-
-    &:hover {
-    background: var(--light-clr-hover);
-    }
 `
 
 const StyledRecipeLink = styled.div`
@@ -89,11 +71,11 @@ const StyledRecipeLink = styled.div`
   cursor: pointer;
 
   & p {
-  text-align: center;
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
   }
 
   &:hover {

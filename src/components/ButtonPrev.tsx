@@ -16,7 +16,6 @@ export default function ButtonPrev(props: Props) {
   );
 }
 
-
 const StyledButtonPrev = styled.button`
   background-color: var(--light-clr);
   color: var(--dark-green);

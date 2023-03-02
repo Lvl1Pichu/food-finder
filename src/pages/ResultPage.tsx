@@ -17,7 +17,6 @@ export default function ResultPage() {
      */
     useEffect(() => {
         const options = {
-            // API key: ea186f9a58784d0d86b47956204c76be
             method: "GET",
             headers: {
               "Content-Type": "application/json",
@@ -82,6 +81,7 @@ const IngredientsList = styled.ul`
     flex-wrap: wrap;
     padding: 1.5rem 0;
     margin-top: 2rem;
+    margin-bottom: 4rem;
     color: var(--dark-green);
 `;
 
@@ -95,9 +95,16 @@ const IngLI = styled.li`
 `
 
 const RecipesContainer = styled.div`
-    max-height: 600px;
     width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
     max-width: 500px;
-    margin-top: -2.5rem;
+    padding-bottom: 3rem;
+
+    @media (max-width:360px){
+        gap: 5rem;
+        padding-bottom: 2rem;
+    }
 `
 
