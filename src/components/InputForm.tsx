@@ -43,6 +43,7 @@ const StyledInputForm = styled.input`
   font-size: 1.25rem;
   background-color: var(--light-clr);
   border: transparent;
+  box-shadow: var(--drop-shaddow)
 `;
 
 const StyledForm = styled.form`

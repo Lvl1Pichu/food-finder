@@ -22,10 +22,12 @@ export default Button;
 const StyledButton = styled.button`
   background-color: var(--light-clr);
   border: none;
+  color: var(--dark-green);
   padding: 0.875rem 1.625rem;
   border-radius: 200rem;
   font-size: 1.25rem;
   width: 18.375rem;
+  box-shadow: var(--drop-shaddow);
   cursor: pointer;
 
   &:hover {
@@ -33,6 +35,6 @@ const StyledButton = styled.button`
   }
 
   &:disabled {
-    color: #1d1d1d;
+    color: var(--dark-green);
   }
 `;

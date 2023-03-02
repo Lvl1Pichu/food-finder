@@ -35,10 +35,9 @@ const StyledListItem = styled.li`
     padding: 0.8rem;
     /* background-color: var(--light-clr); */
     color: #000;
-    color: #fff;
-    border-bottom: 2px solid #fff;
+    color: var(--dark-green);
+    border-bottom: 2px solid var(--dark-green);
     padding: 0.8rem 1.2rem;
-    /* border-radius: 200px; */
     font-size: 1.125rem;
     position: relative;
     display: flex;
