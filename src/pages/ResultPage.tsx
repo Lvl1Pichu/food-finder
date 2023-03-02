@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import ButtonPrev from "../components/ButtonPrev";
@@ -15,27 +15,27 @@ export default function ResultPage() {
     /**
      * Calls API on change of the ingredients state.
      */
-    useEffect(() => {
-        const options = {
-            // API key: ea186f9a58784d0d86b47956204c76be
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
+    // useEffect(() => {
+    //     const options = {
+    //         // API key: ea186f9a58784d0d86b47956204c76be
+    //         method: "GET",
+    //         headers: {
+    //           "Content-Type": "application/json",
+    //         },
+    //       }
 
-        fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=ea186f9a58784d0d86b47956204c76be&ingredients=${ingredients}&number=3`,
-        options)
-        .then((r) => {
-            if (!r.ok) throw new Error("")
-            return r.json()
-        })
-        .then((data) => setRecipeCards(data))
-        .catch(() => {
-            // setError("Tyvärr....")
-        });
-    }, [ingredients] 
-    )
+    //     fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=ea186f9a58784d0d86b47956204c76be&ingredients=${ingredients}&number=3`,
+    //     options)
+    //     .then((r) => {
+    //         if (!r.ok) throw new Error("")
+    //         return r.json()
+    //     })
+    //     .then((data) => setRecipeCards(data))
+    //     .catch(() => {
+    //         // setError("Tyvärr....")
+    //     });
+    // }, [ingredients] 
+    // )
 
     return(
         <PageContainer>
