@@ -45,10 +45,6 @@ function RecipePage() {
 
 export default RecipePage
 
-/* width: 90%;
-max-width: calc(500px + 10%);
-padding: 2rem 5%; */
-
 const ButtonContainer = styled.div`
   position: absolute;
   top: 1rem;

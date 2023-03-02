@@ -35,6 +35,7 @@ export default function StartPage() {
   return (
       <PageContainer>
         <ErrorBoundary>
+          <StyledDiv>
           <StyledHeader>Welcome to Food finder!{'\n'}What do you have in your kitchen?</StyledHeader>
           <InputForm onSubmit={handleAddIngredient} />
           <List 
@@ -43,6 +44,7 @@ export default function StartPage() {
             addIngredient={handleAddIngredient}
           />
           <Button label={"Search Recipes"} onClick={handleSearch} disabled={!ingredients.length}></Button>
+        </StyledDiv>
         </ErrorBoundary>
       </PageContainer>
   )
@@ -53,4 +55,12 @@ const StyledHeader = styled.h1`
   text-align: center;
   font-weight: 400;
   font-family: "IBM Plex Serif", serif;
+`
+
+const StyledDiv = styled.div`
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `

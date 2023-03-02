@@ -9,11 +9,6 @@ interface Props {
 export default function RecipeCard({ recipe }: Props) {
   const navigate = useNavigate();
   
-  const listIngs = (ings: string[]) => {
-    return ings.map((ing) => <IngLI key={ing}>{ing}</IngLI>);
-  };
-
-
   const openRecipe = () => {
     navigate("/recipe/" + recipe.id);
   };
@@ -41,7 +36,6 @@ const CardContainer = styled.div`
   width: 100%;
   height: 250px;
   border-radius: 50%;
-  margin-top: 6rem;
   cursor: pointer;
   transform: scale(100%);
   transition: transform 200ms ease;
@@ -87,7 +81,7 @@ const RecipeOverlay = styled.div`
 `;
 
 const RecipeTitle = styled.p`
-  margin: 0;
+  margin: 55px 0 0 0;
   font-weight: bold;
   font-size: 35px;
   color: var(--dark-green);

@@ -95,9 +95,21 @@ const IngLI = styled.li`
 `
 
 const RecipesContainer = styled.div`
-    max-height: 600px;
     width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
     max-width: 500px;
-    margin-top: -2.5rem;
+    padding-bottom: 6rem;
+
+    @media (max-width:515px){
+        gap: 8rem;
+        padding-bottom: 8rem;
+    }
+
+    @media (max-width:360px){
+        gap: 10rem;
+        padding-bottom: 10rem;
+    }
 `
 

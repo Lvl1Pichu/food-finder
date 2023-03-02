@@ -7,7 +7,6 @@ import HelpPanel from "./components/HelpPanel";
 export default function App() {
 
   const [helpOpen, setHelpOpen] = useState(false);
-
     
   // Toggle visibility of the help panel.
   const openHelp = () => {
@@ -18,16 +17,15 @@ export default function App() {
     setHelpOpen(false)
   }
 
-
     return (
-        <div>
+        <Main>
         <ButtonContainer>
           <HelpButton content="i" onClick={openHelp}></HelpButton>
         </ButtonContainer>
             
           <HelpPanel closeHelp={closeHelp} helpOpen={helpOpen}/>
         <Outlet/>
-        </div>
+        </Main>
     )
 }
 
@@ -35,4 +33,8 @@ const ButtonContainer = styled.div`
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
+`
+
+const Main = styled.div`
+  height: 100%;
 `

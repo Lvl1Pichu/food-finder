@@ -11,8 +11,8 @@ const RecipeInformation: React.FC<Props> = ({ recipe }) => {
         <img src={recipe.image} alt={recipe.title} />
       </ImageCircleContainer>  
       <StyledMetaInfo>
-        <span>{recipe.servings} Servings</span>
-        <span>{recipe.readyInMinutes} Minutes</span>
+        <span>{recipe.servings} Serv.</span>
+        <span>{recipe.readyInMinutes} Min</span>
       </StyledMetaInfo>
       <h2>{recipe.title}</h2>
       <h3>Ingredients</h3>
@@ -58,7 +58,7 @@ const StyledRecipeContainer= styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 90px;
+  margin-top: 10rem;
   position: relative;
 
   & ul {
@@ -92,6 +92,7 @@ const StyledRecipeContainer= styled.div`
 
   & a {
     margin-top: 1rem;
+    color: var(--dark-green);
   }
 `;
 
