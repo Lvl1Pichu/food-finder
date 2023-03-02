@@ -28,12 +28,8 @@ export default function RecipeCard({ recipe }: Props) {
       <RecipeOverlay className="bg-hover">
         <RecipeTitle>{recipe.title}</RecipeTitle>
         <TextContainer>
-          <IngsNum>Missing {recipe.missedIngredientCount} ingredients:</IngsNum>
-          <IngsNum>Uses {recipe.usedIngredientCount} ingredients:</IngsNum>
-          <ul>
-            {listIngs(recipe.missedIngredients.map((ing) => ing.name))}
-          </ul>
-          <ul>{listIngs(recipe.usedIngredients.map((ing) => ing.name))}</ul>
+          <IngsNum>Missing {recipe.missedIngredientCount}</IngsNum>
+          <IngsNum>Uses {recipe.usedIngredientCount}</IngsNum>
         </TextContainer>
       </RecipeOverlay>
     </CardContainer>
@@ -93,12 +89,13 @@ const RecipeOverlay = styled.div`
 const RecipeTitle = styled.p`
   margin: 0;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 35px;
   color: var(--dark-green);
   text-align: center;
   margin-top: 3.1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--dark-green)
+  padding-top: 2rem;
+  border-top: 1px solid var(--dark-green);
+  font-family: "IBM Plex Serif", serif;
 `;
 
 const TextContainer = styled.div`
@@ -112,7 +109,11 @@ const TextContainer = styled.div`
   }
 `;
 
-const IngsNum = styled.h3``;
+const IngsNum = styled.h3`
+padding-bottom: 1rem;
+border-bottom: 1px solid var(--dark-green);
+
+`;
 
 const IngLI = styled.li`
   list-style: none;
