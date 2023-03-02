@@ -40,6 +40,7 @@ const Panel = styled.div`
   padding: 2rem 5%;
   background: #c0c0c0;
   border-radius: 2rem;
+  z-index: 100;
   transform: translateY(-200%) translateX(-50%);
   transition: transform 300ms ease-in-out;
   &.open {

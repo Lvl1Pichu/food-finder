@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-interface HelpButtonProps {
+interface Props {
     content: string
     onClick: () => void;
 }
 
-export default function HelpButton(props: HelpButtonProps) {
+export default function HelpButton(props: Props) {
   return (
     <Button onClick={props.onClick}>{props.content}</Button>
   )

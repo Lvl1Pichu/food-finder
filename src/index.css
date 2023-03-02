@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=IBM+Plex+Serif&display=swap');
+
 * {
     box-sizing: border-box;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family:"IBM Plex Sans", "Helveitca", sans-serif;
 }
 
 body {
@@ -8,6 +10,8 @@ body {
 }
 
 :root {
-    --light-clr: #ffffffbd;
+    --light-clr: rgb(210, 210, 210);
     --light-clr-hover: #ffffff75;
+    --light-green: #B2BCA2;
+    --dark-green: #2E372E;
 }

@@ -2,7 +2,7 @@ import { Component, ReactNode } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-interface EBProps {
+interface Props {
     children: ReactNode
 }
 
@@ -10,8 +10,8 @@ interface EBState {
     hasError: boolean;
 }
 
-export default class ErrorBoundary extends Component<EBProps, EBState> {
-    constructor(props: EBProps) {
+export default class ErrorBoundary extends Component<Props, EBState> {
+    constructor(props: Props) {
         super(props);
         this.state = {hasError: false};
     }

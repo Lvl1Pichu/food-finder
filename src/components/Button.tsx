@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-interface ButtonProps {
+interface Props {
   label: string;
   onClick: () => void;
   disabled?: boolean;
 }
   
-function Button(props: ButtonProps) {
+function Button(props: Props) {
   const { label, onClick, disabled } = props;
   
   return (
