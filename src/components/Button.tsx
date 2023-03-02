@@ -22,9 +22,10 @@ export default Button;
 const StyledButton = styled.button`
   background-color: var(--light-clr);
   border: none;
-  padding: 14px 26px;
-  border-radius: 200px;
-  font-size: 20px;
+  padding: 0.875rem 1.625rem;
+  border-radius: 200rem;
+  font-size: 1.25rem;
+  width: 18.375rem;
   cursor: pointer;
 
   &:hover {

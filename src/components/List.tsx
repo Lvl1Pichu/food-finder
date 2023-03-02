@@ -33,11 +33,12 @@ const StyledList= styled.ul`
 const StyledListItem = styled.li`
     margin: 1rem;
     padding: 0.8rem;
-    background-color: var(--light-clr);
+    /* background-color: var(--light-clr); */
     color: #000;
-    border: none;
+    color: #fff;
+    border-bottom: 2px solid #fff;
     padding: 0.8rem 1.2rem;
-    border-radius: 200px;
+    /* border-radius: 200px; */
     font-size: 1.125rem;
     position: relative;
     display: flex;

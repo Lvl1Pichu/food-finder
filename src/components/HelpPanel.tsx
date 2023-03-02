@@ -53,7 +53,7 @@ const HelpText = styled.div`
     `
 
 const Paragraph = styled.p`
-    margin: 2rem 0;
+    margin: 1.2rem 0;
     color: #141414;
     `
 
