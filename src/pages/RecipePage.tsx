@@ -28,6 +28,11 @@ function RecipePage() {
       console.log(recipe)
 
 
+      // Navigate to site where recipe is hosted.
+      const openSite = () => {
+        window.location.href = recipe.sourceUrl
+      }
+
     return (
         <PageContainer>
           <ErrorBoundary>
@@ -37,7 +42,7 @@ function RecipePage() {
             <ErrorBoundary>
             {recipe ?  <RecipeInformation recipe={recipe}/> : ""}
             </ErrorBoundary>
-            {recipe ? <StyledRecipeLink onClick={window.location.href = recipe.sourceUrl}>
+            {recipe ? <StyledRecipeLink onClick={openSite}>
               <StyledLinkText>To recipe</StyledLinkText>
               <StyledLinkArrow>→</StyledLinkArrow>
               </StyledRecipeLink>: "" }
