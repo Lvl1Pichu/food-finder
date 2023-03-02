@@ -30,15 +30,17 @@ const Panel = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   position: absolute;
   top: 5%;
   left: 50%;
-  max-height: 90%;
+  height: 90%;
   width: 90%;
   max-width: calc(500px + 10%);
   padding: 2rem 5%;
   background: #c0c0c0;
+  background-color: var(--dark-green);
+  border-radius: 2rem;
   z-index: 100;
   transform: translateY(-200%) translateX(-50%);
   transition: transform 300ms ease-in-out;
@@ -46,18 +48,17 @@ const Panel = styled.div`
     transform: translateY(0%) translateX(-50%);
   }
 `
-
 const HelpText = styled.div`
     overflow: scroll;
     `
 
 const Paragraph = styled.p`
-    margin: 2rem 0;
-    color: #141414;
+    margin: 1.2rem 0;
+    color: var(--light-clr);
     `
 
 const Tilde = styled.p`
     margin: 0;
-    color: #141414;
+    color: var(--light-clr);
     text-align: center;
 `

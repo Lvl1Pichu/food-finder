@@ -35,7 +35,7 @@ export default function StartPage() {
   return (
       <PageContainer>
         <ErrorBoundary>
-          <StyledHeader>Find a recipe that fits your needs!</StyledHeader>
+          <StyledHeader>Welcome to Food finder!{'\n'}What do you have in your kitchen?</StyledHeader>
           <InputForm onSubmit={handleAddIngredient} />
           <List 
             ingredients={ingredients} 
@@ -49,5 +49,8 @@ export default function StartPage() {
 }
 
 const StyledHeader = styled.h1`
+  max-width: 29rem;
+  text-align: center;
+  font-weight: 400;
   font-family: "IBM Plex Serif", serif;
 `
