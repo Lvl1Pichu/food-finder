@@ -3,6 +3,11 @@ A small application that helps you find recipes that matches the ingredients at 
 
 [See the app here.](https://papaya-lamington-fca010.netlify.app/)
 
+This project was built by:
+Ellen Dahlgren
+Linus Hammarberg
+Nathanael Blackbourn
+
 # About
 This project is a response to a brief at Medieinstitutet in Gothenburg. In groups of three, we were tasked with creating a small React app. The purpose of the app was our choice.
 
